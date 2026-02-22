@@ -1,17 +1,24 @@
 {
-  "name": "market-ai-temp",
+  "name": "market-ai",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "qa:check": "tsc --noEmit && npm run build",
+    "emulators": "JAVA_HOME=${JAVA_HOME:-/opt/homebrew/opt/openjdk@21} npx firebase-tools emulators:start --only firestore,functions",
+    "deploy": "npx firebase-tools deploy --only hosting,functions,firestore:rules,firestore:indexes"
   },
   "dependencies": {
+    "firebase": "^11.10.0",
+    "firebase-admin": "^13.6.1",
+    "lucide-react": "^0.575.0",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "swr": "^2.4.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

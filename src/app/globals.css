@@ -1,26 +1,140 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Arena.ai warm neutral palette (light) */
+  --bg: #fcfaf8;
+  --panel: #f4f0eb;
+  --panel2: #fcfaf8;
+  --text: #1d1d1b;
+  --muted: #8b867e;
+  --line: #e6dfd6;
+  --good: rgba(158, 209, 160, 0.25);
+  --mid: rgba(233, 166, 44, 0.2);
+  --bad: rgba(233, 164, 160, 0.25);
+  --chip: #f5f2ec;
+  --chip-active-bg: #e9e4dc;
+  --chip-active-border: #ddd3c6;
+  --accent: #268be3;
+  --accent-warm: #e9a62c;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-pill: 9999px;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Georgia", "Times New Roman", "Palatino Linotype", "Book Antiqua", serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Dark mode: hover = "darker selection" gray, selected = more distinct */
+:root[data-theme="dark"] {
+  --bg: #1f1e1b;
+  --panel: #201f1c;
+  --panel2: #23211d;
+  --text: #ebe4d8;
+  --muted: #afa390;
+  --line: #3a342e;
+  --chip: #3a332b;
+  --chip-active-bg: #2a2520;
+  --chip-active-border: #4a4238;
+  --accent: #d3ba90;
+  --accent-warm: #d19b43;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.42), 0 8px 20px -8px rgba(0, 0, 0, 0.34);
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --bg: #1f1e1b;
+    --panel: #201f1c;
+    --panel2: #23211d;
+    --text: #ebe4d8;
+    --muted: #afa390;
+    --line: #3a342e;
+    --chip: #3a332b;
+    --chip-active-bg: #2a2520;
+    --chip-active-border: #4a4238;
+    --accent: #d3ba90;
+    --accent-warm: #d19b43;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.42), 0 8px 20px -8px rgba(0, 0, 0, 0.34);
   }
 }
 
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-primary: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-good: var(--good);
+  --color-mid: var(--mid);
+  --color-bad: var(--bad);
+  --color-chip: var(--chip);
+  --color-chip-active-bg: var(--chip-active-bg);
+  --color-chip-active-border: var(--chip-active-border);
+  --color-accent: var(--accent);
+  --color-accent-warm: var(--accent-warm);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d8d4d0;
+  border-radius: 3px;
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #63584b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) ::-webkit-scrollbar-thumb {
+    background: #63584b;
+  }
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b867e;
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #8a7a66;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) ::-webkit-scrollbar-thumb:hover {
+    background: #8a7a66;
+  }
 }

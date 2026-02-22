@@ -1,0 +1,572 @@
+[
+  {
+    "vendorSlug": "openai",
+    "vendorName": "OpenAI",
+    "slug": "gpt-4o",
+    "canonicalName": "GPT-4o",
+    "family": "GPT-4",
+    "modality": "multimodal",
+    "contextWindow": 128000,
+    "maxOutput": 16384,
+    "releaseDate": "2024-05-13",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "gpt-4o-2024-11-20",
+      "gpt-4o-2025-03-27",
+      "gpt-4o-latest",
+      "chatgpt-4o-latest"
+    ]
+  },
+  {
+    "vendorSlug": "openai",
+    "vendorName": "OpenAI",
+    "slug": "gpt-4o-mini",
+    "canonicalName": "GPT-4o-mini",
+    "family": "GPT-4",
+    "modality": "multimodal",
+    "contextWindow": 128000,
+    "maxOutput": 16384,
+    "releaseDate": "2024-07-18",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "gpt-4o-mini-2024-07-18",
+      "gpt-4o-mini-2025-01-15",
+      "gpt-4o-mini-latest",
+      "chatgpt-4o-mini-latest"
+    ]
+  },
+  {
+    "vendorSlug": "openai",
+    "vendorName": "OpenAI",
+    "slug": "o3",
+    "canonicalName": "o3",
+    "family": "o-series",
+    "modality": "text",
+    "contextWindow": 200000,
+    "maxOutput": 100000,
+    "releaseDate": "2025-04-16",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "o3-2025-04-16",
+      "o3-latest",
+      "o3-high",
+      "openai-o3"
+    ]
+  },
+  {
+    "vendorSlug": "openai",
+    "vendorName": "OpenAI",
+    "slug": "o3-mini",
+    "canonicalName": "o3-mini",
+    "family": "o-series",
+    "modality": "text",
+    "contextWindow": 200000,
+    "maxOutput": 65536,
+    "releaseDate": "2025-01-31",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "o3-mini-2025-01-31",
+      "o3-mini-latest",
+      "o3-mini-high",
+      "openai-o3-mini"
+    ]
+  },
+  {
+    "vendorSlug": "openai",
+    "vendorName": "OpenAI",
+    "slug": "o1",
+    "canonicalName": "o1",
+    "family": "o-series",
+    "modality": "text",
+    "contextWindow": 200000,
+    "maxOutput": 100000,
+    "releaseDate": "2024-12-17",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "o1-2024-12-17",
+      "o1-preview-2024-09-12",
+      "o1-latest",
+      "openai-o1"
+    ]
+  },
+  {
+    "vendorSlug": "openai",
+    "vendorName": "OpenAI",
+    "slug": "o1-mini",
+    "canonicalName": "o1-mini",
+    "family": "o-series",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 65536,
+    "releaseDate": "2024-09-12",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "o1-mini-2024-09-12",
+      "o1-mini-latest",
+      "o1-mini-preview",
+      "openai-o1-mini"
+    ]
+  },
+  {
+    "vendorSlug": "openai",
+    "vendorName": "OpenAI",
+    "slug": "gpt-4-turbo",
+    "canonicalName": "GPT-4 Turbo",
+    "family": "GPT-4",
+    "modality": "multimodal",
+    "contextWindow": 128000,
+    "maxOutput": 4096,
+    "releaseDate": "2024-04-09",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "gpt-4-turbo-2024-04-09",
+      "gpt-4-0125-preview",
+      "gpt-4-1106-preview",
+      "gpt-4-turbo-preview"
+    ]
+  },
+  {
+    "vendorSlug": "openai",
+    "vendorName": "OpenAI",
+    "slug": "gpt-4-5",
+    "canonicalName": "GPT-4.5",
+    "family": "GPT-4",
+    "modality": "multimodal",
+    "contextWindow": 128000,
+    "maxOutput": 16384,
+    "releaseDate": "2025-02-27",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "gpt-4.5-preview",
+      "gpt-4.5-preview-2025-02-27",
+      "gpt-4.5-latest",
+      "gpt-4-5-preview"
+    ]
+  },
+  {
+    "vendorSlug": "openai",
+    "vendorName": "OpenAI",
+    "slug": "gpt-4-1",
+    "canonicalName": "GPT-4.1",
+    "family": "GPT-4",
+    "modality": "multimodal",
+    "contextWindow": 1000000,
+    "maxOutput": 32768,
+    "releaseDate": "2025-04-14",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "gpt-4.1",
+      "gpt-4.1-2025-04-14",
+      "gpt-4.1-latest",
+      "gpt-4-1-preview"
+    ]
+  },
+  {
+    "vendorSlug": "anthropic",
+    "vendorName": "Anthropic",
+    "slug": "claude-opus-4-6",
+    "canonicalName": "Claude Opus 4.6",
+    "family": "Claude 4",
+    "modality": "multimodal",
+    "contextWindow": 200000,
+    "maxOutput": 128000,
+    "releaseDate": "2026-02-18",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "claude-opus-4-6",
+      "claude-opus-4-6-thinking",
+      "claude-opus-4-6-20260218",
+      "anthropic.claude-opus-4-6-v1"
+    ]
+  },
+  {
+    "vendorSlug": "anthropic",
+    "vendorName": "Anthropic",
+    "slug": "claude-sonnet-4-5",
+    "canonicalName": "Claude Sonnet 4.5",
+    "family": "Claude 4",
+    "modality": "multimodal",
+    "contextWindow": 200000,
+    "maxOutput": 64000,
+    "releaseDate": "2025-09-29",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "claude-sonnet-4-5",
+      "claude-sonnet-4-5-20250929",
+      "claude-3-5-sonnet-20241022",
+      "claude-sonnet-4-5-thinking"
+    ]
+  },
+  {
+    "vendorSlug": "anthropic",
+    "vendorName": "Anthropic",
+    "slug": "claude-haiku-4-5",
+    "canonicalName": "Claude Haiku 4.5",
+    "family": "Claude 4",
+    "modality": "multimodal",
+    "contextWindow": 200000,
+    "maxOutput": 64000,
+    "releaseDate": "2025-10-01",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "claude-haiku-4-5",
+      "claude-haiku-4-5-20251001",
+      "claude-3-5-haiku-20241022",
+      "claude-haiku-4-5-fast"
+    ]
+  },
+  {
+    "vendorSlug": "anthropic",
+    "vendorName": "Anthropic",
+    "slug": "claude-opus-4-5",
+    "canonicalName": "Claude Opus 4.5",
+    "family": "Claude 4",
+    "modality": "multimodal",
+    "contextWindow": 200000,
+    "maxOutput": 128000,
+    "releaseDate": "2025-09-29",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "claude-opus-4-5",
+      "claude-opus-4-5-thinking",
+      "claude-opus-4-5-20250929",
+      "anthropic.claude-opus-4-5-v1"
+    ]
+  },
+  {
+    "vendorSlug": "google",
+    "vendorName": "Google",
+    "slug": "gemini-2-0-flash",
+    "canonicalName": "Gemini 2.0 Flash",
+    "family": "Gemini 2.0",
+    "modality": "multimodal",
+    "contextWindow": 1000000,
+    "maxOutput": 8192,
+    "releaseDate": "2025-02-05",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "gemini-2.0-flash-001",
+      "gemini-2.0-flash-exp",
+      "gemini-2.0-flash-latest",
+      "google-gemini-2-0-flash"
+    ]
+  },
+  {
+    "vendorSlug": "google",
+    "vendorName": "Google",
+    "slug": "gemini-2-0-flash-lite",
+    "canonicalName": "Gemini 2.0 Flash-Lite",
+    "family": "Gemini 2.0",
+    "modality": "text",
+    "contextWindow": 1000000,
+    "maxOutput": 8192,
+    "releaseDate": "2025-02-05",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "gemini-2.0-flash-lite-001",
+      "gemini-2.0-flash-lite",
+      "gemini-2.0-flash-lite-preview",
+      "google-gemini-2-0-flash-lite"
+    ]
+  },
+  {
+    "vendorSlug": "google",
+    "vendorName": "Google",
+    "slug": "gemini-2-5-pro",
+    "canonicalName": "Gemini 2.5 Pro",
+    "family": "Gemini 2.5",
+    "modality": "multimodal",
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "releaseDate": "2025-03-25",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "gemini-2.5-pro-preview",
+      "gemini-2.5-pro-001",
+      "gemini-2.5-pro-latest",
+      "google-gemini-2-5-pro"
+    ]
+  },
+  {
+    "vendorSlug": "google",
+    "vendorName": "Google",
+    "slug": "gemini-1-5-pro",
+    "canonicalName": "Gemini 1.5 Pro",
+    "family": "Gemini 1.5",
+    "modality": "multimodal",
+    "contextWindow": 2000000,
+    "maxOutput": 8192,
+    "releaseDate": "2024-02-15",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "gemini-1.5-pro-002",
+      "gemini-1.5-pro",
+      "gemini-1.5-pro-latest",
+      "google-gemini-1-5-pro"
+    ]
+  },
+  {
+    "vendorSlug": "deepseek",
+    "vendorName": "DeepSeek",
+    "slug": "deepseek-v3",
+    "canonicalName": "DeepSeek V3",
+    "family": "DeepSeek V3",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 8192,
+    "releaseDate": "2024-12-26",
+    "isOpenSource": true,
+    "isActive": true,
+    "aliases": [
+      "deepseek-v3-0324",
+      "deepseek-v3",
+      "deepseek-chat",
+      "deepseek-v3-latest"
+    ]
+  },
+  {
+    "vendorSlug": "deepseek",
+    "vendorName": "DeepSeek",
+    "slug": "deepseek-r1",
+    "canonicalName": "DeepSeek R1",
+    "family": "DeepSeek R1",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 64000,
+    "releaseDate": "2025-01-20",
+    "isOpenSource": true,
+    "isActive": true,
+    "aliases": [
+      "deepseek-r1-0120",
+      "deepseek-r1",
+      "deepseek-reasoner",
+      "deepseek-r1-latest"
+    ]
+  },
+  {
+    "vendorSlug": "xai",
+    "vendorName": "xAI",
+    "slug": "grok-4",
+    "canonicalName": "Grok 4",
+    "family": "Grok",
+    "modality": "multimodal",
+    "contextWindow": 2000000,
+    "maxOutput": 131072,
+    "releaseDate": "2025-07-10",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "grok-4",
+      "grok-4-latest",
+      "grok-4.1-thinking",
+      "xai-grok-4"
+    ]
+  },
+  {
+    "vendorSlug": "xai",
+    "vendorName": "xAI",
+    "slug": "grok-4-1-fast",
+    "canonicalName": "Grok 4.1 Fast",
+    "family": "Grok",
+    "modality": "multimodal",
+    "contextWindow": 2000000,
+    "maxOutput": 65536,
+    "releaseDate": "2025-11-12",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "grok-4.1",
+      "grok-4.1-fast",
+      "grok-4.1-fast-latest",
+      "xai-grok-4-1-fast"
+    ]
+  },
+  {
+    "vendorSlug": "xai",
+    "vendorName": "xAI",
+    "slug": "grok-3",
+    "canonicalName": "Grok 3",
+    "family": "Grok",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 131072,
+    "releaseDate": "2025-02-19",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "grok-3-beta",
+      "grok-3",
+      "grok-3-fast",
+      "grok-3-latest"
+    ]
+  },
+  {
+    "vendorSlug": "mistral",
+    "vendorName": "Mistral",
+    "slug": "mistral-large",
+    "canonicalName": "Mistral Large",
+    "family": "Mistral",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 32768,
+    "releaseDate": "2024-11-18",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "mistral-large-2411",
+      "mistral-large",
+      "mistral-large-latest",
+      "mistral-large-instruct"
+    ]
+  },
+  {
+    "vendorSlug": "mistral",
+    "vendorName": "Mistral",
+    "slug": "mistral-small",
+    "canonicalName": "Mistral Small",
+    "family": "Mistral",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 32768,
+    "releaseDate": "2025-03-17",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "mistral-small-2503",
+      "mistral-small",
+      "mistral-small-latest",
+      "mistral-small-instruct"
+    ]
+  },
+  {
+    "vendorSlug": "mistral",
+    "vendorName": "Mistral",
+    "slug": "mistral-medium-3",
+    "canonicalName": "Mistral Medium 3",
+    "family": "Mistral",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 32768,
+    "releaseDate": "2025-05-07",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "mistral-medium-3",
+      "mistral-medium-2505",
+      "mistral-medium-3-latest",
+      "mistral-medium-3-1"
+    ]
+  },
+  {
+    "vendorSlug": "mistral",
+    "vendorName": "Mistral",
+    "slug": "ministral-8b",
+    "canonicalName": "Ministral 8B",
+    "family": "Ministral",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 32768,
+    "releaseDate": "2024-10-16",
+    "isOpenSource": true,
+    "isActive": true,
+    "aliases": [
+      "ministral-8b",
+      "ministral-8b-latest",
+      "ministral-8b-instruct",
+      "ministral-8b-2410"
+    ]
+  },
+  {
+    "vendorSlug": "meta",
+    "vendorName": "Meta",
+    "slug": "llama-4-maverick",
+    "canonicalName": "Llama 4 Maverick",
+    "family": "Llama 4",
+    "modality": "text",
+    "contextWindow": 1000000,
+    "maxOutput": 8192,
+    "releaseDate": "2025-04-05",
+    "isOpenSource": true,
+    "isActive": true,
+    "aliases": [
+      "llama-4-maverick-400b",
+      "llama-4-maverick",
+      "meta-llama-4-maverick",
+      "llama4-maverick"
+    ]
+  },
+  {
+    "vendorSlug": "meta",
+    "vendorName": "Meta",
+    "slug": "llama-3-3-70b",
+    "canonicalName": "Llama 3.3 70B",
+    "family": "Llama 3",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 8192,
+    "releaseDate": "2024-12-06",
+    "isOpenSource": true,
+    "isActive": true,
+    "aliases": [
+      "meta-llama-3.3-70b",
+      "llama-3.3-70b",
+      "llama-3.3-70b-instruct",
+      "meta-llama-3-3-70b"
+    ]
+  },
+  {
+    "vendorSlug": "perplexity",
+    "vendorName": "Perplexity",
+    "slug": "sonar",
+    "canonicalName": "Sonar",
+    "family": "Sonar",
+    "modality": "text",
+    "contextWindow": 128000,
+    "maxOutput": 8192,
+    "releaseDate": "2024-01-18",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "sonar",
+      "sonar-online",
+      "pplx-sonar",
+      "perplexity-sonar"
+    ]
+  },
+  {
+    "vendorSlug": "perplexity",
+    "vendorName": "Perplexity",
+    "slug": "sonar-pro",
+    "canonicalName": "Sonar Pro",
+    "family": "Sonar",
+    "modality": "text",
+    "contextWindow": 200000,
+    "maxOutput": 8192,
+    "releaseDate": "2024-09-20",
+    "isOpenSource": false,
+    "isActive": true,
+    "aliases": [
+      "sonar-pro",
+      "sonar-pro-online",
+      "pplx-sonar-pro",
+      "perplexity-sonar-pro"
+    ]
+  }
+]
