@@ -74,7 +74,7 @@ const FOOTER_SECTIONS: FooterSection[] = [
 ];
 
 const FOOTER_DISCLAIMER =
-  "We're an independent project and not affiliated with model vendors.";
+  "We're a non-profit fan project and we're not associated with arena.ai (unless they want to talk).";
 
 export default function Footer() {
   const [logoSrc, setLogoSrc] = useState("/brand/track.svg");

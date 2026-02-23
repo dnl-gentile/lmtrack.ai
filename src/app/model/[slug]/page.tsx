@@ -103,7 +103,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ? `${model.canonicalName} quality, pricing, and value metrics on lmtrack.ai.`
       : "Model quality, pricing, and value metrics on lmtrack.ai.",
     openGraph: {
-      title: `${modelName} | lmtrack.ai`,
+      title: `${modelName} | Track`,
       description: model
         ? `${model.canonicalName} quality, pricing, and value metrics on lmtrack.ai.`
         : "Model quality, pricing, and value metrics on lmtrack.ai.",

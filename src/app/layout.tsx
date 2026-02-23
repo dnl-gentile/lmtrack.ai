@@ -23,13 +23,13 @@ const THEME_INIT_SCRIPT = `
 
 export const metadata: Metadata = {
   title: {
-    default: "lmtrack.ai - AI Model Speed Rankings",
-    template: "%s | lmtrack.ai",
+    default: "AI Model Speed Rankings",
+    template: "%s | Track",
   },
   description:
     "Benchmark AI model speed and compare latency records across providers.",
   openGraph: {
-    title: "lmtrack.ai - AI Model Speed Rankings",
+    title: "AI Model Speed Rankings",
     description: "Benchmark model latency and track global speed records.",
     siteName: "lmtrack.ai",
     type: "website",

@@ -200,8 +200,6 @@ export default function LogoMenu() {
 
               <Link
                 href="https://market-ai-42646.web.app"
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-0 px-2 py-1.5 text-[19px] text-primary transition-colors"
               >

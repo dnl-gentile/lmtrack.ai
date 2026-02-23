@@ -5,7 +5,7 @@ import OverviewClient from "./OverviewClient";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: {
-    absolute: "Track Leaderboard | lmtrack.ai",
+    absolute: "Track Leaderboard | Track",
   },
 };
 
