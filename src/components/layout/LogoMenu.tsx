@@ -127,6 +127,10 @@ export default function LogoMenu() {
   };
 
   const isDark = resolvedTheme === "dark";
+  const openArena = () => {
+    window.open("https://arena.ai", "_blank", "noopener,noreferrer");
+    setIsOpen(false);
+  };
 
   return (
     <div className="relative" ref={menuRef}>
@@ -178,11 +182,9 @@ export default function LogoMenu() {
             <div
               className="grid grid-cols-2 overflow-hidden rounded-md border border-line bg-background"
             >
-              <Link
-                href="https://arena.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
+              <button
+                type="button"
+                onClick={openArena}
                 className="flex items-center justify-center gap-0 border-r border-line px-2 py-1.5 text-[19px] text-primary transition-colors"
               >
                 <Image
@@ -194,7 +196,7 @@ export default function LogoMenu() {
                   className="-mr-[1px] h-[1.02em] w-[1.02em] shrink-0 origin-center scale-[1.22] object-contain"
                 />
                 <span className="font-serif font-medium leading-none tracking-tight">Arena</span>
-              </Link>
+              </button>
 
               <Link
                 href="https://market-ai-42646.web.app"
