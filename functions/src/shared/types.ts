@@ -60,6 +60,9 @@ export interface Pricing {
   planName: string | null;
   usageLimits: string | null;
   sourceUrl: string | null;
+  sourceName?: string | null;
+  sourceConfidence?: "high" | "medium" | "low" | null;
+  fetchedAt?: string | null;
   snapshotDate: string;
   isCurrent: boolean;
   createdAt: string;

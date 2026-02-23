@@ -27,7 +27,7 @@ export default function ModelScoreCard({
   const subItemGridColumns = subItems.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
 
   return (
-    <article className="rounded-2xl border border-line bg-panel p-6">
+    <article className="rounded-xl border border-line bg-panel p-6">
       <p className="text-sm text-muted">{title}</p>
       <div className="mt-5 text-center">
         <p
@@ -43,7 +43,7 @@ export default function ModelScoreCard({
         {subItems.map((item) => (
           <div
             key={`${item.label}-${item.value}`}
-            className="rounded-xl border border-line/70 bg-panel2 px-3 py-2"
+            className="rounded-lg border border-line/70 bg-panel2 px-3 py-2"
           >
             <p className="text-[11px] uppercase tracking-wide text-muted">
               {item.label}

@@ -11,10 +11,16 @@ export interface LeaderboardSortOverride {
   dir?: "asc" | "desc";
 }
 
+export interface LeaderboardQueryOptions {
+  limit?: number;
+  offset?: number;
+}
+
 function buildLeaderboardUrl(
   domain: DomainKey,
   filters: FilterState,
-  sortOverride?: LeaderboardSortOverride
+  sortOverride?: LeaderboardSortOverride,
+  options?: LeaderboardQueryOptions
 ): string {
   const params = new URLSearchParams();
   params.set("domain", domain);
@@ -46,26 +52,39 @@ function buildLeaderboardUrl(
   if (filters.searchQuery) {
     params.set("search", filters.searchQuery);
   }
+  if (filters.rankBy !== "models") {
+    params.set("rankBy", filters.rankBy);
+  }
+  if (options?.limit != null && Number.isFinite(options.limit)) {
+    params.set("limit", String(Math.max(1, Math.floor(options.limit))));
+  }
+  if (options?.offset != null && Number.isFinite(options.offset)) {
+    params.set("offset", String(Math.max(0, Math.floor(options.offset))));
+  }
   return `/api/leaderboard?${params.toString()}`;
 }
 
-const fetcher = (url: string): Promise<LeaderboardResponse> =>
-  fetch(url).then((r) => {
-    if (!r.ok) throw new Error("Failed to fetch leaderboard");
-    return r.json();
-  });
+const fetcher = async (url: string): Promise<LeaderboardResponse> => {
+  const response = await fetch(url, { cache: "no-store" });
+  const payload = (await response.json()) as LeaderboardResponse;
+  if (!response.ok && payload?.status == null) {
+    throw new Error("Failed to fetch leaderboard");
+  }
+  return payload;
+};
 
 export function useLeaderboard(
   domain: DomainKey,
   filters: FilterState,
-  sortOverride?: LeaderboardSortOverride
+  sortOverride?: LeaderboardSortOverride,
+  options?: LeaderboardQueryOptions
 ): {
   data: LeaderboardResponse | undefined;
   isLoading: boolean;
   error: Error | undefined;
   mutate: () => void;
 } {
-  const url = buildLeaderboardUrl(domain, filters, sortOverride);
+  const url = buildLeaderboardUrl(domain, filters, sortOverride, options);
   const { data, error, isLoading, mutate } = useSWR<LeaderboardResponse>(
     url,
     fetcher,

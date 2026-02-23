@@ -1,4 +1,4 @@
-# market.ai - Agent Handoff Document
+# lmmarket.ai - Agent Handoff Document
 
 ## Project Status After Wave 1 (Agent A Complete)
 
@@ -110,7 +110,7 @@ dataSnapshots/{id}: source, snapshotDate, recordsCount, status, errorMessage, st
 ### Prompt
 
 ```
-I'm setting up Firebase for an existing Next.js 16 project called market.ai. The project is already initialized with Next.js, TypeScript, and Tailwind CSS.
+I'm setting up Firebase for an existing Next.js 16 project called lmmarket.ai. The project is already initialized with Next.js, TypeScript, and Tailwind CSS.
 
 I need the FULL Firebase stack: Firestore, Cloud Functions (TypeScript), Firebase Auth, Firebase Hosting (with SSR for Next.js), Firebase Storage, and Emulators.
 
@@ -260,7 +260,7 @@ Make sure firebase.json is configured for the Next.js framework experiment if av
 ### Prompt
 
 ```
-Create data files for market.ai, an AI model cost-efficiency comparison site. Create these 3 JSON files plus 8 SVG logo placeholders.
+Create data files for lmmarket.ai, an AI model cost-efficiency comparison site. Create these 3 JSON files plus 8 SVG logo placeholders.
 
 1. data/models-seed.json - Array of AI model objects. Create 30+ entries using this exact schema:
 {
@@ -412,7 +412,7 @@ SVG template:
 ### Prompt
 
 ```
-Build Firebase Cloud Functions for market.ai in the functions/src/ directory. The project uses Firestore with collections: vendors, models, arenaScores, pricing, computedMetrics, dataSnapshots.
+Build Firebase Cloud Functions for lmmarket.ai in the functions/src/ directory. The project uses Firestore with collections: vendors, models, arenaScores, pricing, computedMetrics, dataSnapshots.
 
 Reference the existing types in src/lib/types.ts and constants in src/lib/constants.ts (they define Model, ArenaScore, Pricing, ComputedMetrics, DomainKey, etc.).
 
@@ -512,7 +512,7 @@ Use firebase-functions v6 (the latest). Use import syntax. Make sure all async f
 ### Prompt
 
 ```
-Create shared React components for market.ai in src/components/shared/.
+Create shared React components for lmmarket.ai in src/components/shared/.
 Next.js 16, TypeScript, Tailwind CSS v4 (uses @theme inline in globals.css).
 
 Use 'use client' directive for components that use hooks or event handlers.
@@ -609,7 +609,7 @@ Props: { value: string; onChange: (value: string) => void; placeholder?: string;
 ### Prompt
 
 ```
-Create layout components for market.ai in src/components/layout/.
+Create layout components for lmmarket.ai in src/components/layout/.
 Next.js 16, TypeScript, Tailwind CSS v4. Dark theme.
 
 Use 'use client' for components using hooks (usePathname, useState).
@@ -627,7 +627,7 @@ Props: { children?: React.ReactNode }
 - h-screen overflow-y-auto
 - Background: bg-panel border-r border-line
 - Padding: p-3.5, flex flex-col gap-3
-- Header: logo image (48x48) + "market.ai" text (text-lg font-bold) + subtitle "AI Model Value Rankings" (text-xs text-muted)
+- Header: logo image (48x48) + "lmmarket.ai" text (text-lg font-bold) + subtitle "AI Model Value Rankings" (text-xs text-muted)
 - Nav section with NavLink components for: Leaderboard (/leaderboard), Compare (/compare), Pricing (/pricing), About (/about)
   Use simple inline SVG icons for each nav item (bar chart, columns, dollar sign, info circle)
 - Separator: <hr className="border-line my-2" />
@@ -640,7 +640,7 @@ Props: { onMenuOpen: () => void }
 - Only visible on mobile (lg:hidden)
 - Sticky top-0, z-50
 - Background: bg-panel/95 backdrop-blur-md border-b border-line
-- Flex row: hamburger button (left), "market.ai" text (center), search icon placeholder (right)
+- Flex row: hamburger button (left), "lmmarket.ai" text (center), search icon placeholder (right)
 - Height: h-14, px-4
 
 3. src/components/layout/NavLink.tsx:
@@ -681,7 +681,7 @@ Props: { isOpen: boolean; onClose: () => void; children: React.ReactNode }
 ### Prompt
 
 ```
-Build the complete leaderboard feature for market.ai - the core page of the site. Next.js 16, TypeScript, Tailwind CSS v4, Firebase/Firestore.
+Build the complete leaderboard feature for lmmarket.ai - the core page of the site. Next.js 16, TypeScript, Tailwind CSS v4, Firebase/Firestore.
 
 IMPORTANT: Read the existing files first:
 - src/lib/types.ts (all interfaces)
@@ -791,7 +791,7 @@ PART 6: Pages
 ### Prompt
 
 ```
-Build the Compare and Pricing features for market.ai. Next.js 16, TypeScript, Tailwind CSS v4, Firebase/Firestore.
+Build the Compare and Pricing features for lmmarket.ai. Next.js 16, TypeScript, Tailwind CSS v4, Firebase/Firestore.
 
 Read existing files:
 - src/lib/types.ts (CompareModel, CompareResponse, PricingResponse, FilterState)
@@ -927,7 +927,7 @@ PART 6: Pages
 ### Prompt
 
 ```
-Build the Model Detail and About pages for market.ai. Next.js 16, TypeScript, Tailwind CSS v4, Firebase/Firestore.
+Build the Model Detail and About pages for lmmarket.ai. Next.js 16, TypeScript, Tailwind CSS v4, Firebase/Firestore.
 
 Read existing files for types, constants, utils, and shared components.
 
@@ -972,9 +972,9 @@ Server component that:
 PART 3: About Page (/about/page.tsx)
 
 Static content page, max-w-3xl mx-auto:
-- Title: "About market.ai" (text-3xl font-serif)
+- Title: "About lmmarket.ai" (text-3xl font-serif)
 - Sections with h2 headings:
-  1. "What is market.ai?" - Brief explanation
+  1. "What is lmmarket.ai?" - Brief explanation
   2. "How Value Score Works" - Explain the formula:
      blendedPrice = inputPrice × 0.3 + outputPrice × 0.7
      eloPerDollar = eloScore / blendedPrice
@@ -989,7 +989,7 @@ Style: prose-like with text-muted for body, text-primary for headings
 PART 4: Update Metadata
 
 Add proper <title> and OpenGraph metadata to:
-- /model/[slug]/page.tsx: dynamic title = "Model Name | market.ai"
+- /model/[slug]/page.tsx: dynamic title = "Model Name | lmmarket.ai"
 - /about/page.tsx: title = "About"
 ```
 
@@ -1016,7 +1016,7 @@ Add proper <title> and OpenGraph metadata to:
 ### Prompt
 
 ```
-You are the QA reviewer for market.ai. The project was built by multiple agents in parallel. Your job is to make everything work together.
+You are the QA reviewer for lmmarket.ai. The project was built by multiple agents in parallel. Your job is to make everything work together.
 
 STEP 1 - MERGE: Merge all feature branches in this order:
 feat/firebase-setup -> feat/seed-data -> feat/shared-components -> feat/layout-components -> feat/firebase-functions -> feat/leaderboard -> feat/compare-pricing -> feat/model-about-pages

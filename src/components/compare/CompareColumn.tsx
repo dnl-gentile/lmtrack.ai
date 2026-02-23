@@ -12,7 +12,7 @@ interface CompareColumnProps {
 
 export default function CompareColumn({ model, onRemove }: CompareColumnProps) {
     return (
-        <th className="min-w-[180px] p-4 border-b border-line relative group bg-background sticky top-0 z-10">
+        <th className="sticky top-0 z-10 min-w-[180px] border-b border-line bg-table p-4 relative group">
             <div className="flex flex-col items-center gap-2">
                 <VendorLogo vendor={model.vendorSlug} size={32} />
                 <div className="text-center">
@@ -23,7 +23,7 @@ export default function CompareColumn({ model, onRemove }: CompareColumnProps) {
             <button
                 type="button"
                 onClick={onRemove}
-                className="absolute top-2 right-2 p-1.5 rounded-full bg-line text-muted hover:text-primary hover:bg-chip opacity-0 group-hover:opacity-100 transition-all focus:opacity-100 outline-none"
+                className="absolute top-2 right-2 p-1.5 rounded-full bg-line text-muted hover:bg-hover hover:text-primary opacity-0 group-hover:opacity-100 transition-all focus:opacity-100 outline-none"
                 aria-label={`Remove ${model.canonicalName}`}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

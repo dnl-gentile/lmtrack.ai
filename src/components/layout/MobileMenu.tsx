@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { PanelLeftClose } from 'lucide-react';
 
 interface MobileMenuProps {
     isOpen: boolean;
@@ -33,19 +34,16 @@ export default function MobileMenu({ isOpen, onClose, children }: MobileMenuProp
 
             {/* Slide-out Panel */}
             <div
-                className={`fixed left-0 top-0 h-full w-80 bg-panel transform transition-transform duration-300 ease-in-out z-50 lg:hidden flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                className={`fixed left-0 top-0 h-full w-80 bg-background transform transition-transform duration-300 ease-in-out z-50 lg:hidden flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'
                     }`}
             >
-                <div className="absolute top-4 right-4 z-10">
+                <div className="absolute top-3 right-3 z-10">
                     <button
                         onClick={onClose}
-                        className="p-2 bg-panel shadow-sm text-primary hover:bg-chip rounded-full transition-colors border border-line"
+                        className="flex h-9 w-9 items-center justify-center text-primary transition-colors hover:bg-chip/60"
                         aria-label="Close menu"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M18 6 6 18" />
-                            <path d="m6 6 12 12" />
-                        </svg>
+                        <PanelLeftClose className="h-5 w-5" strokeWidth={1.8} />
                     </button>
                 </div>
 

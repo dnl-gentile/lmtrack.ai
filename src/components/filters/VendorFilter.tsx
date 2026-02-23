@@ -2,6 +2,12 @@
 
 import { VENDORS } from "@/lib/constants";
 
+const CheckIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600 dark:text-emerald-500 shrink-0">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
+
 interface VendorFilterProps {
   selected: string[];
   onToggle: (slug: string) => void;
@@ -9,24 +15,29 @@ interface VendorFilterProps {
 
 export default function VendorFilter({ selected, onToggle }: VendorFilterProps) {
   return (
-    <ul className="flex flex-col gap-1.5">
-      {VENDORS.map((v) => (
-        <li key={v.slug} className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            id={`vendor-${v.slug}`}
-            checked={selected.includes(v.slug)}
-            onChange={() => onToggle(v.slug)}
-            className="h-4 w-4 rounded border-line bg-background text-chip-active-border focus:ring-chip-active-border"
-          />
+    <div className="flex flex-col gap-1">
+      {VENDORS.map((v) => {
+        const isSelected = selected.includes(v.slug);
+        return (
           <label
-            htmlFor={`vendor-${v.slug}`}
-            className="cursor-pointer text-primary"
+            key={v.slug}
+            className={`flex items-center gap-2 px-2.5 py-2 rounded-md text-[14px] cursor-pointer transition-colors ${
+              isSelected
+                ? "bg-chip-active-bg text-primary"
+                : "text-muted hover:text-primary hover:bg-chip/50"
+            }`}
           >
-            {v.name}
+            <span className="flex-1 min-w-0">{v.name}</span>
+            {isSelected && <CheckIcon />}
+            <input
+              type="checkbox"
+              className="sr-only"
+              checked={isSelected}
+              onChange={() => onToggle(v.slug)}
+            />
           </label>
-        </li>
-      ))}
-    </ul>
+        );
+      })}
+    </div>
   );
 }

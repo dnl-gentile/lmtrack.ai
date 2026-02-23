@@ -1,63 +1,64 @@
 import { NextResponse } from "next/server";
-import { getModels, getPricingData } from "@/lib/queries";
+import { adminDb } from "@/lib/firebaseAdmin";
+import { getPricing } from "@/lib/queries/pricing";
+import { COLL } from "@/lib/queries/collections";
 import type { PricingResponse } from "@/lib/types";
 
 export async function GET(request: Request) {
+  try {
     const { searchParams } = new URL(request.url);
-    const type = searchParams.get("type") as "api" | "consumer" | null;
-    const vendor = searchParams.get("vendor");
+    const typeParam = searchParams.get("type");
+    const vendorParam = searchParams.get("vendor");
 
-    // We can fetch all current pricing of the given type
-    let allPricing = await getPricingData(undefined, type || "api");
+    const type =
+      typeParam === "api" || typeParam === "consumer"
+        ? (typeParam as "api" | "consumer")
+        : "api";
 
-    // Fetch the associated models to get their vendor slugs/names, contextWindow
-    const modelSlugs = Array.from(new Set(allPricing.map(p => p.modelSlug)));
-    // We might have more than 10 models, so we'll need a batched fetch or fetch all active models
-    let allModels = await getModels();
+    const pricing = await getPricing({
+      type,
+      vendor: vendorParam || undefined,
+    });
 
-    if (vendor) {
-        allModels = allModels.filter(m => m.vendorSlug === vendor);
-        const vendorModelSlugs = new Set(allModels.map(m => m.slug));
-        allPricing = allPricing.filter(p => vendorModelSlugs.has(p.modelSlug));
-    }
+    const latestSnap = await adminDb
+      .collection(COLL.dataSnapshots)
+      .orderBy("completedAt", "desc")
+      .limit(30)
+      .get();
 
-    const models = allModels.filter(m => allPricing.some(p => p.modelSlug === m.slug));
+    const latestDoc = latestSnap.docs.find((doc) => {
+      const source = doc.data().source as string | undefined;
+      return source === "updatePricing" || source === "pricing";
+    });
+
+    const latestStatus = latestDoc
+      ? (latestDoc.data().status as "completed" | "partial" | "failed")
+      : null;
 
     const response: PricingResponse = {
-        models: models.map(model => {
-            const modelPricing = allPricing.filter(p => p.modelSlug === model.slug);
-            const apiPricingDoc = modelPricing.find(p => p.pricingType === "api");
-            const consumerPricingDocs = modelPricing.filter(p => p.pricingType === "consumer");
-
-            return {
-                model: {
-                    id: model.id,
-                    slug: model.slug,
-                    canonicalName: model.canonicalName,
-                    vendorSlug: model.vendorSlug,
-                    vendorName: model.vendorName,
-                    contextWindow: model.contextWindow
-                },
-                apiPricing: apiPricingDoc ? {
-                    input1m: apiPricingDoc.inputPrice1m ?? 0,
-                    output1m: apiPricingDoc.outputPrice1m ?? 0,
-                    cached1m: apiPricingDoc.cachedInput1m,
-                    batchIn1m: apiPricingDoc.batchInput1m,
-                    batchOut1m: apiPricingDoc.batchOutput1m,
-                } : null,
-                consumerPlans: consumerPricingDocs.map(c => ({
-                    planName: c.planName ?? "Premium",
-                    monthlyUsd: c.monthlyPriceUsd ?? 0,
-                    usageLimits: c.usageLimits
-                })),
-                sourceUrl: apiPricingDoc?.sourceUrl || consumerPricingDocs[0]?.sourceUrl || null,
-                snapshotDate: apiPricingDoc?.snapshotDate || consumerPricingDocs[0]?.snapshotDate || new Date().toISOString()
-            };
-        })
+      status:
+        latestStatus === "failed"
+          ? "error"
+          : latestStatus === "partial"
+          ? "partial"
+          : "ok",
+      message:
+        latestStatus === "failed"
+          ? "Pricing data source failed in the latest run."
+          : latestStatus === "partial"
+          ? "Pricing data source completed partially in the latest run."
+          : undefined,
+      models: pricing.models,
     };
 
-    // Sort logic could be handled client side or here. 
-    // Let's just return to client, client seems to do it.
-
     return NextResponse.json(response);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unexpected pricing error";
+    const response: PricingResponse = {
+      status: "error",
+      message,
+      models: [],
+    };
+    return NextResponse.json(response, { status: 500 });
+  }
 }

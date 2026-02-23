@@ -13,9 +13,9 @@ export default function NavLink({ href, icon, label, collapsed }: { href: string
             <Link
                 href={href}
                 title={label}
-                className={`flex items-center justify-center p-2 rounded-lg transition-colors ${isActive
-                    ? 'bg-chip-active-bg text-primary'
-                    : 'text-muted hover:bg-chip hover:text-primary'
+                className={`flex items-center justify-center rounded-md p-1.5 transition-colors ${isActive
+                    ? 'bg-chip text-primary'
+                    : 'text-primary hover:bg-chip'
                     }`}
             >
                 {icon}
@@ -26,12 +26,12 @@ export default function NavLink({ href, icon, label, collapsed }: { href: string
     return (
         <Link
             href={href}
-            className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm transition-colors ${isActive
-                ? 'bg-chip-active-bg border border-chip-active-border text-primary font-medium'
-                : 'text-muted hover:bg-chip border border-transparent'
+            className={`flex w-full items-center gap-3 rounded-[8px] pl-2 pr-3 py-1.5 text-[15px] leading-[1.25] transition-colors ${isActive
+                ? 'bg-chip text-primary'
+                : 'text-primary hover:bg-chip'
                 }`}
         >
-            <span className="flex-shrink-0">{icon}</span>
+            <span className="flex-shrink-0 text-current">{icon}</span>
             <span>{label}</span>
         </Link>
     );

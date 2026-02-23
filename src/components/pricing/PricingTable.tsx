@@ -90,30 +90,30 @@ export default function PricingTable({ data }: PricingTableProps) {
 
     return (
         <div className="w-full flex flex-col gap-4">
-            <div className="flex bg-chip border border-line p-1 rounded-xl w-fit">
+            <div className="flex bg-chip border border-line p-1 rounded-lg w-fit">
                 <button
                     onClick={() => { setView("api"); setSortField("input"); setSortDir("asc"); }}
-                    className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-colors ${view === "api" ? "bg-background text-primary shadow-sm" : "text-muted hover:text-primary"
+                    className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-colors ${view === "api" ? "bg-table text-primary shadow-sm" : "text-muted hover:bg-hover hover:text-primary"
                         }`}
                 >
                     API Pricing
                 </button>
                 <button
                     onClick={() => { setView("consumer"); setSortField("monthly"); setSortDir("asc"); }}
-                    className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-colors ${view === "consumer" ? "bg-background text-primary shadow-sm" : "text-muted hover:text-primary"
+                    className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-colors ${view === "consumer" ? "bg-table text-primary shadow-sm" : "text-muted hover:bg-hover hover:text-primary"
                         }`}
                 >
                     Consumer Plans
                 </button>
             </div>
 
-            <div className="w-full overflow-x-auto rounded-xl border border-line bg-background relative">
-                <table className="w-full border-collapse text-left text-sm">
-                    <thead className="bg-panel sticky top-0 z-10 border-b border-line">
+            <div className="relative w-full overflow-x-auto rounded-[20px] border border-line bg-table">
+                <table className="w-full border-collapse bg-table text-left text-sm">
+                    <thead className="sticky top-0 z-10 border-b border-line bg-table-header">
                         <tr>
                             <th className="py-3 px-4 font-medium text-xs text-muted text-center w-12 cursor-default">#</th>
                             <th
-                                className="py-3 px-4 font-medium text-xs text-muted cursor-pointer hover:bg-chip group transition-colors select-none"
+                                className="group cursor-pointer select-none px-4 py-3 text-xs font-medium text-muted transition-colors hover:bg-hover"
                                 onClick={() => toggleSort("name")}
                             >
                                 Model <SortIcon field="name" />
@@ -123,13 +123,13 @@ export default function PricingTable({ data }: PricingTableProps) {
                             {view === "api" ? (
                                 <>
                                     <th
-                                        className="py-3 px-4 font-medium text-xs text-muted text-center cursor-pointer hover:bg-chip group transition-colors select-none"
+                                        className="group cursor-pointer select-none px-4 py-3 text-center text-xs font-medium text-muted transition-colors hover:bg-hover"
                                         onClick={() => toggleSort("input")}
                                     >
                                         Input $/1M <SortIcon field="input" />
                                     </th>
                                     <th
-                                        className="py-3 px-4 font-medium text-xs text-muted text-center cursor-pointer hover:bg-chip group transition-colors select-none"
+                                        className="group cursor-pointer select-none px-4 py-3 text-center text-xs font-medium text-muted transition-colors hover:bg-hover"
                                         onClick={() => toggleSort("output")}
                                     >
                                         Output $/1M <SortIcon field="output" />
@@ -144,7 +144,7 @@ export default function PricingTable({ data }: PricingTableProps) {
                                 <>
                                     <th className="py-3 px-4 font-medium text-xs text-muted text-center cursor-default">Plan</th>
                                     <th
-                                        className="py-3 px-4 font-medium text-xs text-muted text-center cursor-pointer hover:bg-chip group transition-colors select-none"
+                                        className="group cursor-pointer select-none px-4 py-3 text-center text-xs font-medium text-muted transition-colors hover:bg-hover"
                                         onClick={() => toggleSort("monthly")}
                                     >
                                         Monthly $ <SortIcon field="monthly" />

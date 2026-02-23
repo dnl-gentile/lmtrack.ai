@@ -71,8 +71,8 @@ export default function MetricRow({ label, values, format, higherIsBetter }: Met
     };
 
     return (
-        <tr className="hover:bg-chip/50 transition-colors group">
-            <td className="sticky left-0 bg-background group-hover:bg-chip/50 p-4 text-sm font-medium text-muted border-b border-line min-w-[200px] shadow-[1px_0_0_0_var(--line)]">
+        <tr className="group transition-colors hover:bg-hover">
+            <td className="sticky left-0 min-w-[200px] border-b border-line bg-table p-4 text-sm font-medium text-muted shadow-[1px_0_0_0_var(--line)] group-hover:bg-hover">
                 {label}
             </td>
             {values.map((val, idx) => (

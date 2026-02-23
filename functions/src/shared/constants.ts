@@ -1,12 +1,13 @@
 export type DomainKey =
   | "overall"
-  | "coding"
-  | "math"
-  | "creative_writing"
-  | "hard_prompts"
-  | "instruction_following"
+  | "text"
+  | "code"
+  | "text-to-image"
+  | "image-edit"
+  | "text-to-video"
+  | "image-to-video"
   | "vision"
-  | "longer_query";
+  | "search";
 
 export interface DomainDef {
   key: DomainKey;
@@ -15,14 +16,15 @@ export interface DomainDef {
 }
 
 export const DOMAINS: DomainDef[] = [
-  { key: "overall", label: "Overall", arenaPath: "/leaderboard" },
-  { key: "coding", label: "Coding", arenaPath: "/leaderboard/code" },
-  { key: "math", label: "Math", arenaPath: "/leaderboard" },
-  { key: "creative_writing", label: "Creative Writing", arenaPath: "/leaderboard" },
-  { key: "hard_prompts", label: "Hard Prompts", arenaPath: "/leaderboard" },
-  { key: "instruction_following", label: "Instruction Following", arenaPath: "/leaderboard" },
+  { key: "overall", label: "Overall", arenaPath: "/leaderboard/text" },
+  { key: "text", label: "Text", arenaPath: "/leaderboard/text" },
+  { key: "code", label: "Code", arenaPath: "/leaderboard/code" },
+  { key: "text-to-image", label: "Text to Image", arenaPath: "/leaderboard/text-to-image" },
+  { key: "image-edit", label: "Image Edit", arenaPath: "/leaderboard/image-edit" },
+  { key: "text-to-video", label: "Text to Video", arenaPath: "/leaderboard/text-to-video" },
+  { key: "image-to-video", label: "Image to Video", arenaPath: "/leaderboard/image-to-video" },
   { key: "vision", label: "Vision", arenaPath: "/leaderboard/vision" },
-  { key: "longer_query", label: "Longer Query", arenaPath: "/leaderboard" },
+  { key: "search", label: "Search", arenaPath: "/leaderboard/search" },
 ];
 
 export const DOMAIN_MAP = Object.fromEntries(

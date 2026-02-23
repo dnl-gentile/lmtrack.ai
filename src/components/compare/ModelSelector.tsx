@@ -71,7 +71,7 @@ export default function ModelSelector({ selectedSlugs, onChange }: ModelSelector
                     debounceMs={200}
                 />
                 {dropdownOpen && results.length > 0 && (
-                    <div className="absolute top-12 left-0 w-full z-50 bg-panel border border-line rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2">
+                    <div className="absolute top-12 left-0 w-full z-50 bg-panel border border-line rounded-lg shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                         <ul>
                             {results.map((mdl) => (
                                 <li key={mdl.slug}>

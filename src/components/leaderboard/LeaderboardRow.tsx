@@ -12,18 +12,11 @@ interface LeaderboardRowProps {
   rank: number;
 }
 
-const DOMAIN_COLS: Array<{ key: "coding" | "math" | "creative_writing"; label: string }> = [
-  { key: "coding", label: "Coding" },
-  { key: "math", label: "Math" },
-  { key: "creative_writing", label: "Creative" },
-];
-
 export default function LeaderboardRow({ entry, rank }: LeaderboardRowProps) {
-  const { model, eloScore, eloCi, votes, blendedPrice1m, valueScore, domainScores } =
-    entry;
+  const { model, eloScore, eloCi, votes, valueScore } = entry;
 
   return (
-    <tr className="border-b border-line/50 transition-colors hover:bg-chip/50">
+    <tr className="border-b border-line/50 transition-colors hover:bg-hover">
       <td className="px-3 py-2.5">
         <RankBadge rank={rank} />
       </td>
@@ -52,11 +45,6 @@ export default function LeaderboardRow({ entry, rank }: LeaderboardRowProps) {
           <MissingDataBadge />
         )}
       </td>
-      {DOMAIN_COLS.map(({ key }) => (
-        <td key={key} className="px-3 py-2.5 text-muted tabular-nums text-xs">
-          {domainScores[key] != null ? Math.round(domainScores[key]!) : <MissingDataBadge />}
-        </td>
-      ))}
     </tr>
   );
 }

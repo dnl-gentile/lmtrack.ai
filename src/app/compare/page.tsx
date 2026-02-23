@@ -36,7 +36,7 @@ function ComparePageContent() {
                                 <div className="w-8 h-8 rounded-full border-t-2 border-primary animate-spin"></div>
                             </div>
                         ) : isError ? (
-                            <div className="bg-bad/10 text-red-700 p-4 rounded-xl border border-bad/20">
+                            <div className="bg-bad/10 text-red-700 p-4 rounded-lg border border-bad/20">
                                 Failed to load comparison data. Please try again.
                             </div>
                         ) : (
@@ -47,7 +47,7 @@ function ComparePageContent() {
                         )}
                     </section>
                 ) : (
-                    <section className="mt-12 flex flex-col items-center justify-center p-12 border border-dashed border-line rounded-2xl bg-chip/30">
+                    <section className="mt-12 flex flex-col items-center justify-center p-12 border border-dashed border-line rounded-xl bg-chip/30">
                         <div className="text-muted mb-4 text-center">
                             <span className="block text-4xl mb-2">📊</span>
                             <h2 className="text-xl font-semibold text-primary mb-1">Select models to compare</h2>

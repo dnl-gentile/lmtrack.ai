@@ -1,60 +1,73 @@
 "use client";
 
 import React, { useState } from "react";
-import { usePathname } from "next/navigation";
 import { ListOrdered, ArrowLeftRight, CircleDollarSign } from "lucide-react";
+import { usePathname } from "next/navigation";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
 import MobileMenu from "@/components/layout/MobileMenu";
 import NavLink from "@/components/layout/NavLink";
 import LogoMenu from "@/components/layout/LogoMenu";
-import GlobalFilters from "@/components/filters/GlobalFilters";
+import Footer from "@/components/layout/Footer";
 
 export default function AppLayoutClient({ children }: { children: React.ReactNode }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
+    const isLeaderboardDomainPage =
+        pathname.startsWith("/leaderboard/") && pathname !== "/leaderboard";
+    const mainClassName = isLeaderboardDomainPage
+        ? "flex min-h-0 flex-1 flex-col overflow-y-auto bg-background lg:overflow-hidden"
+        : "flex min-h-0 flex-1 flex-col overflow-y-auto bg-background";
+    const contentClassName = isLeaderboardDomainPage
+        ? "relative w-full px-4 pt-0 pb-6 lg:h-full lg:min-h-0 lg:px-6 lg:pt-0 lg:pb-0"
+        : "relative w-full px-4 pt-0 pb-6 lg:px-6 lg:pt-0 lg:pb-8";
 
     return (
-        <div className="flex min-h-screen flex-col lg:flex-row">
+        <div className="flex h-screen flex-col lg:flex-row">
             <Sidebar />
 
-            <div className="flex flex-1 flex-col overflow-x-hidden min-h-screen">
-                <TopBar onMenuOpen={() => setMobileMenuOpen(true)} />
+            <div className="flex flex-1 flex-col overflow-hidden">
+                <TopBar
+                    isMenuOpen={mobileMenuOpen}
+                    onMenuToggle={() => setMobileMenuOpen((prev) => !prev)}
+                />
 
                 <MobileMenu
                     isOpen={mobileMenuOpen}
                     onClose={() => setMobileMenuOpen(false)}
                 >
-                    <div className="flex flex-col gap-3 p-3.5 h-full">
-                        <div className="px-2 py-2">
+                    <div className="flex h-full flex-col gap-1.5 px-2.5 pb-3.5 pt-4">
+                        <div className="px-0.5 py-0.5">
                             <LogoMenu />
                         </div>
 
-                        <nav className="flex flex-col gap-1 mt-4">
+                        <nav className="mt-1.5 flex flex-col gap-1 px-0.5">
+                            <NavLink
+                                href="/pricing"
+                                label="Pricing"
+                                icon={<CircleDollarSign className="w-5 h-5" strokeWidth={1.6} />}
+                            />
                             <NavLink
                                 href="/leaderboard"
                                 label="Leaderboard"
-                                icon={<ListOrdered className="w-5 h-5 text-muted" strokeWidth={1.5} />}
+                                icon={<ListOrdered className="w-5 h-5" strokeWidth={1.6} />}
                             />
                             <NavLink
                                 href="/compare"
                                 label="Compare"
-                                icon={<ArrowLeftRight className="w-5 h-5 text-muted" strokeWidth={1.5} />}
-                            />
-                            <NavLink
-                                href="/pricing"
-                                label="Pricing"
-                                icon={<CircleDollarSign className="w-5 h-5 text-muted" strokeWidth={1.5} />}
+                                icon={<ArrowLeftRight className="w-5 h-5" strokeWidth={1.6} />}
                             />
                         </nav>
-
-                        <div className="flex-1 mt-4">
-                            <GlobalFilters />
-                        </div>
                     </div>
                 </MobileMenu>
 
-                <main className="flex-1 p-4 lg:p-6 w-full relative">
-                    {children}
+                <main className={mainClassName}>
+                    <div className={contentClassName}>
+                        {children}
+                    </div>
+                    <div className={isLeaderboardDomainPage ? "hidden" : ""}>
+                        <Footer />
+                    </div>
                 </main>
             </div>
         </div>

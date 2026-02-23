@@ -1,7 +1,7 @@
 import { adminDb } from "@/lib/firebaseAdmin";
 import type { LeaderboardEntry } from "@/lib/types";
 import { COLL } from "./collections";
-import type { DomainKey } from "@/lib/constants";
+import type { DomainKey, RankBy } from "@/lib/constants";
 import { getModels } from "./models";
 import { getDataFreshness } from "./metrics";
 import {
@@ -14,6 +14,7 @@ export interface GetLeaderboardParams {
   domain: DomainKey;
   sort: string;
   dir: "asc" | "desc";
+  rankBy?: RankBy;
   vendors?: string[];
   priceMin?: number;
   priceMax?: number;
@@ -33,6 +34,18 @@ export interface GetLeaderboardResult {
     pricingLastUpdated: string | null;
   };
 }
+
+const DOMAIN_QUERY_ALIASES: Record<DomainKey, string[]> = {
+  overall: ["overall", "text"],
+  text: ["text", "overall"],
+  code: ["code", "coding"],
+  "text-to-image": ["text-to-image", "text_to_image"],
+  "image-edit": ["image-edit", "image_edit"],
+  "text-to-video": ["text-to-video", "text_to_video"],
+  "image-to-video": ["image-to-video", "image_to_video"],
+  vision: ["vision"],
+  search: ["search", "longer_query"],
+};
 
 function formatEloCi(ciLower: number | null, ciUpper: number | null): string | null {
   if (ciLower == null || ciUpper == null) return null;
@@ -58,7 +71,9 @@ export async function getLeaderboard(
     offset = 0,
   } = params;
 
-  const [freshness, modelsSnap, arenaSnap, pricingSnap, metricsSnap] =
+  const domainQueryKeys = DOMAIN_QUERY_ALIASES[domain] ?? [domain];
+
+  const [freshness, modelsSnap, arenaSnaps, pricingSnap, metricsSnaps] =
     await Promise.all([
       getDataFreshness(),
       getModels({
@@ -66,19 +81,24 @@ export async function getLeaderboard(
         active: true,
         search,
       }),
-      adminDb
-        .collection(COLL.arenaScores)
-        .where("domain", "==", domain)
-        .get(),
+      Promise.all(
+        domainQueryKeys.map((queryDomain) =>
+          adminDb.collection(COLL.arenaScores).where("domain", "==", queryDomain).get()
+        )
+      ),
       adminDb
         .collection(COLL.pricing)
         .where("isCurrent", "==", true)
         .get(),
-      adminDb
-        .collection(COLL.computedMetrics)
-        .where("domain", "==", domain)
-        .get(),
+      Promise.all(
+        domainQueryKeys.map((queryDomain) =>
+          adminDb.collection(COLL.computedMetrics).where("domain", "==", queryDomain).get()
+        )
+      ),
     ]);
+
+  const arenaDocs = arenaSnaps.flatMap((snapshot) => snapshot.docs);
+  const metricDocs = metricsSnaps.flatMap((snapshot) => snapshot.docs);
 
   const models = vendors?.length
     ? modelsSnap.filter((m) => vendors.includes(m.vendorSlug))
@@ -94,7 +114,7 @@ export async function getLeaderboard(
     }
   >();
   let latestSnapshotDate: string | null = null;
-  arenaSnap.docs.forEach((doc) => {
+  arenaDocs.forEach((doc) => {
     const d = doc.data();
     const sd = d.snapshotDate as string;
     if (
@@ -104,15 +124,18 @@ export async function getLeaderboard(
       latestSnapshotDate = sd;
     }
   });
-  arenaSnap.docs.forEach((doc) => {
-    const d = doc.data();
-    if (d.snapshotDate !== latestSnapshotDate) return;
-    const modelId = d.modelId as string;
-    latestArenaByModel.set(modelId, {
-      eloScore: Number(d.eloScore) || 0,
-      ciLower: d.eloCiLower ?? null,
-      ciUpper: d.eloCiUpper ?? null,
-      votes: d.votes ?? null,
+  domainQueryKeys.forEach((queryDomain) => {
+    arenaDocs.forEach((doc) => {
+      const d = doc.data();
+      if (d.domain !== queryDomain || d.snapshotDate !== latestSnapshotDate) return;
+      const modelId = d.modelId as string;
+      if (latestArenaByModel.has(modelId)) return;
+      latestArenaByModel.set(modelId, {
+        eloScore: Number(d.eloScore) || 0,
+        ciLower: d.eloCiLower ?? null,
+        ciUpper: d.eloCiUpper ?? null,
+        votes: d.votes ?? null,
+      });
     });
   });
 
@@ -152,15 +175,28 @@ export async function getLeaderboard(
       valueRank: number | null;
     }
   >();
-  metricsSnap.docs.forEach((doc) => {
-    const d = doc.data();
-    const modelId = d.modelId as string;
-    metricsByModel.set(modelId, {
-      eloScore: d.eloScore ?? null,
-      blendedPrice1m: d.blendedPrice1m ?? null,
-      eloPerDollar: d.eloPerDollar ?? null,
-      valueScore: d.valueScore ?? null,
-      valueRank: d.valueRank ?? null,
+  domainQueryKeys.forEach((queryDomain) => {
+    let latestMetricsSnapshotDate: string | null = null;
+    metricDocs.forEach((doc) => {
+      const d = doc.data();
+      if (d.domain !== queryDomain) return;
+      const sd = d.snapshotDate as string;
+      if (latestMetricsSnapshotDate == null || (sd && sd > latestMetricsSnapshotDate)) {
+        latestMetricsSnapshotDate = sd;
+      }
+    });
+    metricDocs.forEach((doc) => {
+      const d = doc.data();
+      if (d.domain !== queryDomain || d.snapshotDate !== latestMetricsSnapshotDate) return;
+      const modelId = d.modelId as string;
+      if (metricsByModel.has(modelId)) return;
+      metricsByModel.set(modelId, {
+        eloScore: d.eloScore ?? null,
+        blendedPrice1m: d.blendedPrice1m ?? null,
+        eloPerDollar: d.eloPerDollar ?? null,
+        valueScore: d.valueScore ?? null,
+        valueRank: d.valueRank ?? null,
+      });
     });
   });
 

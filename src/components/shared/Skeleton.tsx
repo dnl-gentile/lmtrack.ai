@@ -8,7 +8,7 @@ interface SkeletonProps {
 function SkeletonBlock({ width, height, className }: Omit<SkeletonProps, "rows">) {
   return (
     <div
-      className={`animate-pulse bg-line/40 rounded-xl ${className ?? ""}`.trim()}
+      className={`animate-pulse bg-line/40 rounded-lg ${className ?? ""}`.trim()}
       style={{ width: width ?? "100%", height: height ?? "1rem" }}
     />
   );

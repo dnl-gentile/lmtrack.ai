@@ -100,13 +100,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: modelName,
     description: model
-      ? `${model.canonicalName} quality, pricing, and value metrics on market.ai.`
-      : "Model quality, pricing, and value metrics on market.ai.",
+      ? `${model.canonicalName} quality, pricing, and value metrics on lmmarket.ai.`
+      : "Model quality, pricing, and value metrics on lmmarket.ai.",
     openGraph: {
-      title: `${modelName} | market.ai`,
+      title: `${modelName} | lmmarket.ai`,
       description: model
-        ? `${model.canonicalName} quality, pricing, and value metrics on market.ai.`
-        : "Model quality, pricing, and value metrics on market.ai.",
+        ? `${model.canonicalName} quality, pricing, and value metrics on lmmarket.ai.`
+        : "Model quality, pricing, and value metrics on lmmarket.ai.",
       type: "website",
     },
   };
@@ -224,11 +224,11 @@ export default async function ModelDetailPage({ params }: PageProps) {
           />
         </section>
 
-        <section className="mt-8 rounded-2xl border border-line bg-panel p-6">
+        <section className="mt-8 rounded-xl border border-line bg-panel p-6">
           <h2 className="text-lg font-semibold text-primary">Domain Breakdown</h2>
-          <div className="mt-4 overflow-x-auto rounded-xl border border-line/70">
-            <table className="w-full min-w-[520px] text-left text-sm">
-              <thead className="bg-panel2">
+          <div className="mt-4 overflow-x-auto rounded-lg border border-line/70 bg-table">
+            <table className="w-full min-w-[520px] bg-table text-left text-sm">
+              <thead className="bg-table-header">
                 <tr>
                   <th className="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-muted">
                     Domain

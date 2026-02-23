@@ -14,7 +14,7 @@ export default function OptimizationModeSelector({
 }: OptimizationModeProps) {
   return (
     <div
-      className="inline-flex rounded-xl border border-line bg-chip p-0.5"
+      className="inline-flex rounded-lg border border-line bg-chip p-0.5"
       role="group"
       aria-label="Optimization mode"
     >
@@ -25,8 +25,8 @@ export default function OptimizationModeSelector({
           onClick={() => onChange(mode.key)}
           className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
             value === mode.key
-              ? "bg-background text-primary shadow-sm"
-              : "text-muted hover:text-primary"
+              ? "bg-chip-active-bg text-primary shadow-sm"
+              : "text-muted hover:bg-hover hover:text-primary"
           }`}
         >
           {mode.label}

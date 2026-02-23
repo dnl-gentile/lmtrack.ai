@@ -41,7 +41,7 @@ export default function SearchInput({
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
+        className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
         aria-hidden="true"
       >
         <circle cx="11" cy="11" r="8" />
@@ -52,7 +52,7 @@ export default function SearchInput({
         value={internalValue}
         onChange={(event) => setInternalValue(event.target.value)}
         placeholder={placeholder}
-        className="w-full bg-background border border-line rounded-xl px-3 py-2.5 pl-9 text-primary text-sm outline-none focus:border-chip-active-border transition placeholder:text-muted"
+        className="w-full bg-background border border-line rounded-md px-2.5 py-2 pl-8 text-primary text-[14px] outline-none focus:border-chip-active-border transition placeholder:text-muted"
       />
     </div>
   );

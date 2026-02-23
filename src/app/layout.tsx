@@ -23,17 +23,73 @@ const THEME_INIT_SCRIPT = `
 
 export const metadata: Metadata = {
   title: {
-    default: "market.ai - AI Model Value Rankings",
-    template: "%s | market.ai",
+    default: "lmmarket.ai - AI Model Value Rankings",
+    template: "%s | lmmarket.ai",
   },
   description:
     "Compare AI models by cost-efficiency. Combines Arena quality scores with API pricing to find the best value models.",
   openGraph: {
-    title: "market.ai - AI Model Value Rankings",
+    title: "lmmarket.ai - AI Model Value Rankings",
     description:
       "Compare AI models by cost-efficiency. Find the best value AI models.",
-    siteName: "market.ai",
+    siteName: "lmmarket.ai",
     type: "website",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon", media: "(prefers-color-scheme: light)" },
+      { url: "/favicon-dark.ico", type: "image/x-icon", media: "(prefers-color-scheme: dark)" },
+      {
+        url: "/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/favicon-16x16-dark.png",
+        sizes: "16x16",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/favicon-32x32-dark.png",
+        sizes: "32x32",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/apple-touch-icon-dark.png",
+        sizes: "180x180",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+    other: [
+      {
+        rel: "manifest",
+        url: "/site.webmanifest",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        rel: "manifest",
+        url: "/site-dark.webmanifest",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
   },
 };
 

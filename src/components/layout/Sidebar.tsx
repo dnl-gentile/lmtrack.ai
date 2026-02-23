@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { PanelLeftOpen, PanelLeftClose, ListOrdered, ArrowLeftRight, CircleDollarSign, FileText } from 'lucide-react';
 import NavLink from './NavLink';
-import GlobalFilters from '@/components/filters/GlobalFilters';
 import LogoMenu from './LogoMenu';
 
 export default function Sidebar() {
@@ -20,24 +19,24 @@ export default function Sidebar() {
 
   if (isCollapsed) {
     return (
-      <aside className="hidden lg:flex flex-col items-center w-[52px] h-screen bg-panel border-r border-line py-4 gap-1">
+      <aside className="sticky top-0 hidden h-screen w-[52px] flex-col items-center gap-1 border-r border-line bg-background pt-4 lg:flex">
         <button
           onClick={() => setIsCollapsed(false)}
-          className="p-2 text-muted hover:text-primary hover:bg-chip rounded-lg transition-colors mb-4"
+          className="mb-4 rounded-md p-1.5 text-muted transition-colors hover:bg-chip hover:text-primary"
           title="Expand sidebar"
         >
-          <PanelLeftOpen className="w-[18px] h-[18px]" />
+          <PanelLeftOpen className="h-5 w-5" strokeWidth={1.6} />
         </button>
-        <NavLink href="/leaderboard" label="" icon={<ListOrdered className="w-[18px] h-[18px]" strokeWidth={1.5} />} collapsed />
-        <NavLink href="/compare" label="" icon={<ArrowLeftRight className="w-[18px] h-[18px]" strokeWidth={1.5} />} collapsed />
-        <NavLink href="/pricing" label="" icon={<CircleDollarSign className="w-[18px] h-[18px]" strokeWidth={1.5} />} collapsed />
-        <div className="mt-auto w-full border-t border-line/80 pt-3 pb-2">
+        <NavLink href="/pricing" label="" icon={<CircleDollarSign className="h-5 w-5" strokeWidth={1.6} />} collapsed />
+        <NavLink href="/leaderboard" label="" icon={<ListOrdered className="h-5 w-5" strokeWidth={1.6} />} collapsed />
+        <NavLink href="/compare" label="" icon={<ArrowLeftRight className="h-5 w-5" strokeWidth={1.6} />} collapsed />
+        <div className="mt-auto w-full border-t border-line/50 py-2">
           <Link
             href="/terms-of-use"
             title="Legal"
-            className="flex items-center justify-center p-2 text-muted hover:text-primary hover:bg-chip rounded-lg transition-colors"
+            className="flex items-center justify-center rounded-md p-1.5 text-muted transition-colors hover:bg-chip hover:text-primary"
           >
-            <FileText className="w-[18px] h-[18px]" strokeWidth={1.7} />
+            <FileText className="h-5 w-5" strokeWidth={1.6} />
           </Link>
         </div>
       </aside>
@@ -45,43 +44,44 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="hidden lg:flex flex-col gap-3 w-[240px] h-screen overflow-y-auto bg-panel border-r border-line px-2.5 pt-2 pb-1">
-      <div className="flex items-center justify-between px-1 py-1">
-        <div className="flex-1 mr-2">
+      <aside className="sticky top-0 hidden h-screen w-[240px] flex-col border-r border-line bg-background lg:flex">
+      {/* Fixed header */}
+      <div className="flex items-center justify-between px-2 pb-1 pt-1.5">
+        <div className="flex-1">
           <LogoMenu />
         </div>
         <button
           onClick={() => setIsCollapsed(true)}
-          className="p-1.5 text-muted hover:text-primary hover:bg-chip rounded-lg transition-colors shrink-0"
+          className="shrink-0 rounded-md p-1.5 text-muted transition-colors hover:bg-chip hover:text-primary"
           title="Collapse sidebar"
         >
-          <PanelLeftClose className="w-4 h-4" />
+          <PanelLeftClose className="h-5 w-5" strokeWidth={1.6} />
         </button>
       </div>
 
-      <nav className="flex flex-col gap-0.5 mt-3">
-        <NavLink
-          href="/leaderboard"
-          label="Leaderboard"
-          icon={<ListOrdered className="w-[18px] h-[18px] text-muted" strokeWidth={1.5} />}
-        />
-        <NavLink
-          href="/compare"
-          label="Compare"
-          icon={<ArrowLeftRight className="w-[18px] h-[18px] text-muted" strokeWidth={1.5} />}
-        />
-        <NavLink
-          href="/pricing"
-          label="Pricing"
-          icon={<CircleDollarSign className="w-[18px] h-[18px] text-muted" strokeWidth={1.5} />}
-        />
-      </nav>
-
-      <div className="flex-1 mt-4">
-        <GlobalFilters />
+      {/* Scrollable content */}
+      <div className="mt-2.5 flex-1 overflow-y-auto px-1 scrollbar-hide">
+        <nav className="flex flex-col gap-1">
+          <NavLink
+            href="/pricing"
+            label="Pricing"
+            icon={<CircleDollarSign className="h-5 w-5" strokeWidth={1.6} />}
+          />
+          <NavLink
+            href="/leaderboard"
+            label="Leaderboard"
+            icon={<ListOrdered className="h-5 w-5" strokeWidth={1.6} />}
+          />
+          <NavLink
+            href="/compare"
+            label="Compare"
+            icon={<ArrowLeftRight className="h-5 w-5" strokeWidth={1.6} />}
+          />
+        </nav>
       </div>
 
-      <div className="mt-auto pt-2 pb-0.5">
+      {/* Fixed footer */}
+      <div className="border-t border-line/50 px-2 py-2">
         {footerLinks}
       </div>
     </aside>

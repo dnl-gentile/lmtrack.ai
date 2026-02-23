@@ -40,7 +40,7 @@ export default function ModelPricingCard({ pricing }: ModelPricingCardProps) {
 
   if (selectedPricing.length === 0) {
     return (
-      <section className="rounded-2xl border border-line bg-panel p-6">
+      <section className="rounded-xl border border-line bg-panel p-6">
         <h2 className="text-lg font-semibold text-primary">Pricing Details</h2>
         <div className="mt-4">
           <MissingDataBadge label="No pricing data available" />
@@ -62,9 +62,9 @@ export default function ModelPricingCard({ pricing }: ModelPricingCardProps) {
         <div>
           <h3 className="text-sm font-medium text-muted">API Pricing</h3>
           {apiPricing ? (
-            <div className="mt-2 overflow-x-auto rounded-xl border border-line/70">
-              <table className="w-full min-w-[380px] text-left text-sm">
-                <thead className="bg-panel2">
+            <div className="mt-2 overflow-x-auto rounded-[20px] border border-line/70 bg-table">
+              <table className="w-full min-w-[380px] bg-table text-left text-sm">
+                <thead className="bg-table-header">
                   <tr>
                     <th className="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-muted">
                       Metric
@@ -106,9 +106,9 @@ export default function ModelPricingCard({ pricing }: ModelPricingCardProps) {
         <div>
           <h3 className="text-sm font-medium text-muted">Consumer Plans</h3>
           {consumerPlans.length > 0 ? (
-            <div className="mt-2 overflow-x-auto rounded-xl border border-line/70">
-              <table className="w-full min-w-[480px] text-left text-sm">
-                <thead className="bg-panel2">
+            <div className="mt-2 overflow-x-auto rounded-[20px] border border-line/70 bg-table">
+              <table className="w-full min-w-[480px] bg-table text-left text-sm">
+                <thead className="bg-table-header">
                   <tr>
                     <th className="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-muted">
                       Plan

@@ -49,7 +49,7 @@ export default function PricingRow(props: PricingRowProps) {
     const { type, model, rank, sourceUrl } = props;
 
     return (
-        <tr className="hover:bg-chip/50 transition-colors group">
+        <tr className="transition-colors group hover:bg-hover">
             <td className="py-4 px-4 text-sm text-muted text-center border-b border-line w-12">
                 {rank}
             </td>

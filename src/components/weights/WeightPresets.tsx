@@ -9,9 +9,10 @@ interface WeightPresetsProps {
 
 const PRESETS: Record<string, Partial<Record<DomainKey, number>>> = {
     Balanced: {}, // all 1s (default)
-    "Coding Focus": { coding: 5 },
-    "Creative Focus": { creative_writing: 5 },
-    "Math Focus": { math: 5 },
+    "Text Focus": { text: 5 },
+    "Code Focus": { code: 5 },
+    "Vision Focus": { vision: 5 },
+    "Search Focus": { search: 5 },
 };
 
 export default function WeightPresets({ onSelect }: WeightPresetsProps) {
@@ -19,13 +20,14 @@ export default function WeightPresets({ onSelect }: WeightPresetsProps) {
         // Default is 1 for everything
         const newWeights: Record<DomainKey, number> = {
             overall: 1,
-            coding: 1,
-            math: 1,
-            creative_writing: 1,
-            hard_prompts: 1,
-            instruction_following: 1,
+            text: 1,
+            code: 1,
+            "text-to-image": 1,
+            "image-edit": 1,
+            "text-to-video": 1,
+            "image-to-video": 1,
             vision: 1,
-            longer_query: 1,
+            search: 1,
         };
 
         // Apply preset boost

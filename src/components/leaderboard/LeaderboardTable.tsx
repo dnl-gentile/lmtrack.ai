@@ -28,10 +28,10 @@ export default function LeaderboardTable({
   }
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full min-w-[800px] border-collapse text-sm">
+    <div className="overflow-x-auto rounded-[20px] border border-line bg-table">
+      <table className="w-full min-w-[720px] border-collapse bg-table text-sm">
         <thead>
-          <tr className="sticky top-0 z-10 bg-background border-b border-line">
+          <tr className="sticky top-0 z-10 border-b border-line bg-table-header">
             <th
               scope="col"
               className="w-12 px-3 py-2.5 text-left text-xs font-medium text-muted"
@@ -45,7 +45,7 @@ export default function LeaderboardTable({
               Model
             </th>
             <SortHeader
-              label="Elo"
+              label="Score"
               field="eloScore"
               currentSort={sort}
               currentDir={dir}
@@ -72,24 +72,6 @@ export default function LeaderboardTable({
               currentDir={dir}
               onSort={onSort}
             />
-            <th
-              scope="col"
-              className="px-3 py-2.5 text-left text-xs font-medium text-muted"
-            >
-              Coding
-            </th>
-            <th
-              scope="col"
-              className="px-3 py-2.5 text-left text-xs font-medium text-muted"
-            >
-              Math
-            </th>
-            <th
-              scope="col"
-              className="px-3 py-2.5 text-left text-xs font-medium text-muted"
-            >
-              Creative
-            </th>
           </tr>
         </thead>
         <tbody>

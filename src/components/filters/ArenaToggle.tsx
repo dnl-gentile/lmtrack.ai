@@ -7,30 +7,28 @@ interface ArenaToggleProps {
 
 export default function ArenaToggle({ checked, onChange }: ArenaToggleProps) {
   return (
-    <div className="flex items-center justify-between gap-2">
-      <label
-        htmlFor="arena-only"
-        className="cursor-pointer text-primary"
-      >
-        Only models with Arena data
-      </label>
+    <div className="flex bg-chip/50 dark:bg-chip/40 p-0.5 rounded-lg">
       <button
         type="button"
-        id="arena-only"
-        role="switch"
-        aria-checked={checked}
-        onClick={() => onChange(!checked)}
-        className={`relative inline-flex h-6 w-11 shrink-0 rounded-full border transition-colors ${
+        onClick={() => onChange(true)}
+        className={`flex-1 py-1.5 px-3 text-[13px] text-center rounded-md transition-colors ${
           checked
-            ? "border-chip-active-border bg-chip-active-bg"
-            : "border-line bg-chip"
+            ? "bg-chip-active-bg text-primary font-medium border border-line shadow-sm"
+            : "text-muted hover:bg-hover hover:text-primary"
         }`}
       >
-        <span
-          className={`pointer-events-none inline-block h-5 w-5 translate-y-0.5 rounded-full bg-white shadow transition-transform ${
-            checked ? "translate-x-6" : "translate-x-0.5"
-          }`}
-        />
+        On
+      </button>
+      <button
+        type="button"
+        onClick={() => onChange(false)}
+        className={`flex-1 py-1.5 px-3 text-[13px] text-center rounded-md transition-colors ${
+          !checked
+            ? "bg-chip-active-bg text-primary font-medium border border-line shadow-sm"
+            : "text-muted hover:bg-hover hover:text-primary"
+        }`}
+      >
+        Off
       </button>
     </div>
   );

@@ -5,8 +5,11 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn how market.ai combines quality scores and pricing data to compute model value.",
+    "Learn how lmmarket.ai combines quality scores and pricing data to compute model value.",
 };
+
+const FOOTER_DISCLAIMER =
+  "We're a non-profit fan project and we're not associated with arena.ai (unless they want to talk).";
 
 export default function AboutPage() {
   return (
@@ -16,7 +19,7 @@ export default function AboutPage() {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/market-ai-logo.png"
-            alt="market.ai logo"
+            alt="lmmarket.ai logo"
             width={32}
             height={32}
             className="rounded-md shadow-sm border border-line"
@@ -35,7 +38,7 @@ export default function AboutPage() {
         <div className="space-y-6">
           <h1 className="text-4xl lg:text-5xl font-serif text-primary tracking-tight">About Us</h1>
           <p className="text-muted leading-relaxed text-[17px]">
-            Created to help developers and businesses navigate the complex landscape of AI models, market.ai is an independent platform for understanding AI performance and cost in the real world. Thousands of builders use market.ai to find the best value frontier models, combining quality benchmarks with API pricing so teams can choose models based on both performance and cost-efficiency.
+            Created to help developers and businesses navigate the complex landscape of AI models, lmmarket.ai is an independent platform for understanding AI performance and cost in the real world. Thousands of builders use lmmarket.ai to find the best value frontier models, combining quality benchmarks with API pricing so teams can choose models based on both performance and cost-efficiency.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
@@ -55,7 +58,7 @@ export default function AboutPage() {
         </div>
 
         <div className="space-y-4">
-          <div className="flex gap-6 p-6 rounded-2xl bg-[#fafafa] dark:bg-panel border border-transparent dark:border-line items-start">
+          <div className="flex gap-6 p-6 rounded-xl bg-[#fafafa] dark:bg-panel border border-transparent dark:border-line items-start">
             <div className="flex-shrink-0 w-12 h-12 bg-white dark:bg-chip rounded-full flex items-center justify-center shadow-sm border border-line/50">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
             </div>
@@ -65,7 +68,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="flex gap-6 p-6 rounded-2xl bg-[#fafafa] dark:bg-panel border border-transparent dark:border-line items-start">
+          <div className="flex gap-6 p-6 rounded-xl bg-[#fafafa] dark:bg-panel border border-transparent dark:border-line items-start">
             <div className="flex-shrink-0 w-12 h-12 bg-white dark:bg-chip rounded-full flex items-center justify-center shadow-sm border border-line/50">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></svg>
             </div>
@@ -105,82 +108,91 @@ export default function AboutPage() {
       </main>
 
       {/* Footer Sitemap */}
-      <footer className="mt-20 pt-16 border-t border-line/60 pb-8 text-[13px] text-muted-foreground w-full">
+      <footer className="mt-20 pt-16 pb-8 text-[13px] text-muted-foreground w-full">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
           <div className="space-y-4">
-            <h4 className="font-semibold text-muted uppercase tracking-wider text-[11px]">Use Cases</h4>
+            <h4 className="font-serif text-[12px] font-normal uppercase tracking-[0.04em] text-muted">Use Cases</h4>
             <div className="flex flex-col gap-3">
-              <Link href="#" className="hover:text-primary transition-colors">Chat with AI</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Build Apps & Websites</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Write & Edit Text</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Search the Web</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Generate Images</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Generate Videos</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Choose any model</Link>
-              <Link href="/compare" className="hover:text-primary transition-colors">Compare Models Side by Side</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Chat with AI</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Build Apps & Websites</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Write & Edit Text</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Search the Web</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Generate Images</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Generate Videos</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Choose any model</Link>
+              <Link href="/compare" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Compare Models Side by Side</Link>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-semibold text-muted uppercase tracking-wider text-[11px]">Leaderboard Rankings</h4>
+            <h4 className="font-serif text-[12px] font-normal uppercase tracking-[0.04em] text-muted">Leaderboard Rankings</h4>
             <div className="flex flex-col gap-3">
-              <Link href="/leaderboard" className="hover:text-primary transition-colors">Overall</Link>
-              <Link href="/leaderboard/overall" className="hover:text-primary transition-colors">Text</Link>
-              <Link href="/leaderboard/coding" className="hover:text-primary transition-colors">Code</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Text to Image</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Image Edit</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Text to Video</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Image to Video</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Vision</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Search</Link>
+              <Link href="/leaderboard" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Overview</Link>
+              <Link href="/leaderboard/text" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Text</Link>
+              <Link href="/leaderboard/code" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Code</Link>
+              <Link href="/leaderboard/text-to-image" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Text to Image</Link>
+              <Link href="/leaderboard/image-edit" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Image Edit</Link>
+              <Link href="/leaderboard/text-to-video" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Text to Video</Link>
+              <Link href="/leaderboard/image-to-video" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Image to Video</Link>
+              <Link href="/leaderboard/vision" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Vision</Link>
+              <Link href="/leaderboard/search" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Search</Link>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-semibold text-muted uppercase tracking-wider text-[11px]">Company</h4>
+            <h4 className="font-serif text-[12px] font-normal uppercase tracking-[0.04em] text-muted">Company</h4>
             <div className="flex flex-col gap-3">
-              <Link href="/about" className="hover:text-primary transition-colors">About Us</Link>
-              <Link href="/about#how-it-works" className="hover:text-primary transition-colors">How it Works</Link>
-              <Link href="/blog" className="hover:text-primary transition-colors">Blog</Link>
-              <Link href="/jobs" className="hover:text-primary transition-colors">Careers</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Changelog</Link>
-              <Link href="/help" className="hover:text-primary transition-colors">Help Center</Link>
-              <Link href="#" className="hover:text-primary transition-colors">FAQ</Link>
+              <Link href="/about" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">About Us</Link>
+              <Link href="/about#how-it-works" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">How it Works</Link>
+              <Link href="/blog" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Blog</Link>
+              <Link href="/jobs" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Careers</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Changelog</Link>
+              <Link href="/help" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Help Center</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">FAQ</Link>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-semibold text-muted uppercase tracking-wider text-[11px]">Legal</h4>
+            <h4 className="font-serif text-[12px] font-normal uppercase tracking-[0.04em] text-muted">Legal</h4>
             <div className="flex flex-col gap-3">
-              <Link href="#" className="hover:text-primary transition-colors">Terms</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Cookies</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Terms</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Privacy</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Cookies</Link>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-semibold text-muted uppercase tracking-wider text-[11px]">Follow</h4>
+            <h4 className="font-serif text-[12px] font-normal uppercase tracking-[0.04em] text-muted">Follow</h4>
             <div className="flex flex-col gap-3">
-              <Link href="#" className="hover:text-primary transition-colors">X</Link>
-              <Link href="#" className="hover:text-primary transition-colors">LinkedIn</Link>
-              <Link href="#" className="hover:text-primary transition-colors">YouTube</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Discord</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">X</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">LinkedIn</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">YouTube</Link>
+              <Link href="#" className="font-sans text-[14px] font-normal hover:text-primary transition-colors">Discord</Link>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between pt-6 border-t border-line/60">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/market-ai-logo.png"
-              alt="market.ai logo"
-              width={24}
-              height={24}
-              className="rounded-md shadow-[0_0_1px_rgba(0,0,0,0.5)] border border-line"
-            />
-            <span className="text-lg font-bold tracking-tight text-primary mt-0.5">market</span>
-          </Link>
-          <span className="mt-4 md:mt-0">© market.ai 2026</span>
+        <div className="border-t-2 border-line/80 pt-6 dark:border-white/70">
+          <div className="grid grid-cols-1 items-center gap-3 md:grid-cols-[auto_1fr_auto] md:gap-4">
+            <Link href="/" className="inline-flex items-center leading-none">
+              <div className="relative h-14 w-14 shrink-0 overflow-hidden -mr-1 lg:h-16 lg:w-16">
+                <Image
+                  src="/market-ai-logo.png"
+                  alt="lmmarket.ai logo"
+                  width={64}
+                  height={64}
+                  className="object-contain"
+                />
+              </div>
+              <span className="font-serif text-[40px] leading-[0.86] tracking-tight text-primary sm:text-[44px] lg:text-[48px]">
+                Market
+              </span>
+            </Link>
+            <p className="text-center text-[10px] font-light italic leading-tight text-muted/85 [font-family:var(--font-cursive)]">
+              {FOOTER_DISCLAIMER}
+            </p>
+            <span className="text-center md:text-right">© lmmarket.ai 2026</span>
+          </div>
         </div>
       </footer>
     </div>

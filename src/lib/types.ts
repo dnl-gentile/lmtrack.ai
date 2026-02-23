@@ -1,5 +1,5 @@
-import type { DomainKey, Modality, OptimizationMode } from "./constants";
-export type { DomainKey, Modality, OptimizationMode };
+import type { DomainKey, Modality, OptimizationMode, RankBy } from "./constants";
+export type { DomainKey, Modality, OptimizationMode, RankBy };
 
 // ─── Firestore Document Types ──────────────────────────────────
 
@@ -61,6 +61,9 @@ export interface Pricing {
   planName: string | null;
   usageLimits: string | null;
   sourceUrl: string | null;
+  sourceName?: string | null;
+  sourceConfidence?: "high" | "medium" | "low" | null;
+  fetchedAt?: string | null;
   snapshotDate: string;
   isCurrent: boolean;
   createdAt: string;
@@ -169,6 +172,7 @@ export interface FilterState {
   modalities: Modality[];
   onlyWithArena: boolean;
   searchQuery: string;
+  rankBy: RankBy;
   optimizationMode: OptimizationMode;
 }
 
@@ -180,12 +184,15 @@ export const DEFAULT_FILTER_STATE: FilterState = {
   modalities: [],
   onlyWithArena: false,
   searchQuery: "",
+  rankBy: "models",
   optimizationMode: "best_value",
 };
 
 // ─── API Response Types ──────────────────────────────────
 
 export interface LeaderboardResponse {
+  status: "ok" | "unconfigured" | "error";
+  message?: string;
   entries: LeaderboardEntry[];
   total: number;
   domain: DomainKey;
@@ -200,6 +207,8 @@ export interface CompareResponse {
 }
 
 export interface PricingResponse {
+  status?: "ok" | "partial" | "error";
+  message?: string;
   models: {
     model: Pick<Model, "id" | "slug" | "canonicalName" | "vendorSlug" | "vendorName" | "contextWindow">;
     apiPricing: {
@@ -217,6 +226,24 @@ export interface PricingResponse {
     sourceUrl: string | null;
     snapshotDate: string;
   }[];
+}
+
+export interface PricingHistoryPoint {
+  snapshotDate: string;
+  input1m: number | null;
+  output1m: number | null;
+  blendedPrice1m: number | null;
+  valueScore: number | null;
+  eloScore: number | null;
+}
+
+export interface PricingHistorySeries {
+  modelSlug: string;
+  points: PricingHistoryPoint[];
+}
+
+export interface PricingHistoryResponse {
+  series: PricingHistorySeries[];
 }
 
 export interface MetricsResponse {

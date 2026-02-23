@@ -13,11 +13,11 @@ export default function CompareMatrix({ models, onRemove }: CompareMatrixProps) 
     if (models.length === 0) return null;
 
     return (
-        <div className="w-full overflow-x-auto pb-8 relative rounded-xl border border-line bg-background shadow-2xl">
-            <table className="w-full border-collapse text-sm">
+        <div className="relative w-full overflow-x-auto rounded-[20px] border border-line bg-table pb-8 shadow-2xl">
+            <table className="w-full border-collapse bg-table text-sm">
                 <thead>
                     <tr>
-                        <th className="sticky left-0 bg-background top-0 z-20 min-w-[200px] border-b border-line shadow-[1px_0_0_0_var(--line)] p-4">
+                        <th className="sticky left-0 top-0 z-20 min-w-[200px] border-b border-line bg-table shadow-[1px_0_0_0_var(--line)] p-4">
                             <span className="sr-only">Metrics</span>
                         </th>
                         {models.map(m => (
@@ -32,7 +32,7 @@ export default function CompareMatrix({ models, onRemove }: CompareMatrixProps) 
                 <tbody>
                     {/* QUALITY SCORES SECTION */}
                     <tr>
-                        <th colSpan={models.length + 1} className="bg-panel2 sticky left-0 text-left px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted border-b border-line shadow-[1px_0_0_0_var(--line)]">
+                        <th colSpan={models.length + 1} className="sticky left-0 border-b border-line bg-table-header px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted shadow-[1px_0_0_0_var(--line)]">
                             Quality Scores
                         </th>
                     </tr>
@@ -43,20 +43,38 @@ export default function CompareMatrix({ models, onRemove }: CompareMatrixProps) 
                         higherIsBetter={true}
                     />
                     <MetricRow
-                        label="Arena Elo (Coding)"
-                        values={models.map(m => m.arenaScores?.coding?.elo ?? null)}
+                        label="Arena Elo (Text)"
+                        values={models.map(m => m.arenaScores?.text?.elo ?? null)}
                         format="score"
                         higherIsBetter={true}
                     />
                     <MetricRow
-                        label="Arena Elo (Math)"
-                        values={models.map(m => m.arenaScores?.math?.elo ?? null)}
+                        label="Arena Elo (Code)"
+                        values={models.map(m => m.arenaScores?.code?.elo ?? null)}
                         format="score"
                         higherIsBetter={true}
                     />
                     <MetricRow
-                        label="Arena Elo (Creative)"
-                        values={models.map(m => m.arenaScores?.creative_writing?.elo ?? null)}
+                        label="Arena Elo (Text-to-Image)"
+                        values={models.map(m => m.arenaScores?.["text-to-image"]?.elo ?? null)}
+                        format="score"
+                        higherIsBetter={true}
+                    />
+                    <MetricRow
+                        label="Arena Elo (Image Edit)"
+                        values={models.map(m => m.arenaScores?.["image-edit"]?.elo ?? null)}
+                        format="score"
+                        higherIsBetter={true}
+                    />
+                    <MetricRow
+                        label="Arena Elo (Text-to-Video)"
+                        values={models.map(m => m.arenaScores?.["text-to-video"]?.elo ?? null)}
+                        format="score"
+                        higherIsBetter={true}
+                    />
+                    <MetricRow
+                        label="Arena Elo (Image-to-Video)"
+                        values={models.map(m => m.arenaScores?.["image-to-video"]?.elo ?? null)}
                         format="score"
                         higherIsBetter={true}
                     />
@@ -66,10 +84,16 @@ export default function CompareMatrix({ models, onRemove }: CompareMatrixProps) 
                         format="score"
                         higherIsBetter={true}
                     />
+                    <MetricRow
+                        label="Arena Elo (Search)"
+                        values={models.map(m => m.arenaScores?.search?.elo ?? null)}
+                        format="score"
+                        higherIsBetter={true}
+                    />
 
                     {/* PRICING SECTION */}
                     <tr>
-                        <th colSpan={models.length + 1} className="bg-panel2 sticky left-0 text-left px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted border-b border-line shadow-[1px_0_0_0_var(--line)]">
+                        <th colSpan={models.length + 1} className="sticky left-0 border-b border-line bg-table-header px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted shadow-[1px_0_0_0_var(--line)]">
                             Pricing (API)
                         </th>
                     </tr>
@@ -94,7 +118,7 @@ export default function CompareMatrix({ models, onRemove }: CompareMatrixProps) 
 
                     {/* VALUE METRICS SECTION */}
                     <tr>
-                        <th colSpan={models.length + 1} className="bg-panel2 sticky left-0 text-left px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted border-b border-line shadow-[1px_0_0_0_var(--line)]">
+                        <th colSpan={models.length + 1} className="sticky left-0 border-b border-line bg-table-header px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted shadow-[1px_0_0_0_var(--line)]">
                             Value Metrics
                         </th>
                     </tr>
@@ -113,7 +137,7 @@ export default function CompareMatrix({ models, onRemove }: CompareMatrixProps) 
 
                     {/* SPECIFICATIONS SECTION */}
                     <tr>
-                        <th colSpan={models.length + 1} className="bg-panel2 sticky left-0 text-left px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted border-b border-line shadow-[1px_0_0_0_var(--line)]">
+                        <th colSpan={models.length + 1} className="sticky left-0 border-b border-line bg-table-header px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted shadow-[1px_0_0_0_var(--line)]">
                             Specifications
                         </th>
                     </tr>

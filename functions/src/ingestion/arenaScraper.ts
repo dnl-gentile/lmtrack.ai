@@ -13,7 +13,8 @@ function getArenaPath(domain: string): string {
 
 /**
  * Fetch arena.ai leaderboard HTML for a domain and return parsed entries.
- * Uses /leaderboard, /leaderboard/code, /leaderboard/vision per DOMAIN_MAP.
+ * Uses DOMAIN_MAP arena paths (for example /leaderboard/text, /leaderboard/code,
+ * /leaderboard/text-to-image, /leaderboard/vision, /leaderboard/search).
  * Returns empty array and logs warning if page is JS-rendered or request fails.
  */
 export async function scrapeArenaLeaderboard(
@@ -30,7 +31,7 @@ export async function scrapeArenaLeaderboard(
       signal: controller.signal,
       headers: {
         "User-Agent":
-          "market-ai-functions/1.0 (Firebase; +https://market.ai)",
+          "market-ai-functions/1.0 (Firebase; +https://lmmarket.ai)",
       },
     });
     clearTimeout(timeout);

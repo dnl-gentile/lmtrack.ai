@@ -4,7 +4,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import type { FilterState } from "@/lib/types";
 import { DEFAULT_FILTER_STATE } from "@/lib/types";
-import type { DomainKey, Modality, OptimizationMode } from "@/lib/constants";
+import type { DomainKey, Modality, OptimizationMode, RankBy } from "@/lib/constants";
 
 function parseFiltersFromSearchParams(
   searchParams: URLSearchParams
@@ -49,6 +49,11 @@ function parseFiltersFromSearchParams(
         : undefined;
 
   const searchQuery = searchParams.get("search") ?? undefined;
+  const rankByParam = searchParams.get("rankBy");
+  const rankBy =
+    rankByParam === "models" || rankByParam === "labs"
+      ? (rankByParam as RankBy)
+      : undefined;
   const optimizationMode = (searchParams.get("optimization") as OptimizationMode | null) ?? undefined;
 
   return {
@@ -59,6 +64,7 @@ function parseFiltersFromSearchParams(
     ...(modalities && modalities.length > 0 && { modalities }),
     ...(onlyWithArena !== undefined && { onlyWithArena }),
     ...(searchQuery != null && searchQuery !== "" && { searchQuery }),
+    ...(rankBy && { rankBy }),
     ...(optimizationMode && { optimizationMode }),
   };
 }
@@ -86,6 +92,9 @@ function filtersToSearchParams(filters: FilterState): URLSearchParams {
   }
   if (filters.searchQuery) {
     params.set("search", filters.searchQuery);
+  }
+  if (filters.rankBy !== "models") {
+    params.set("rankBy", filters.rankBy);
   }
   if (filters.optimizationMode !== "best_value") {
     params.set("optimization", filters.optimizationMode);

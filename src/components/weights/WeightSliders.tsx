@@ -14,7 +14,7 @@ export default function WeightSliders({ weights, onChange }: WeightSlidersProps)
     };
 
     return (
-        <div className="flex flex-col gap-4 bg-panel2 border border-line p-4 rounded-xl shadow-inner">
+        <div className="flex flex-col gap-4 bg-panel2 border border-line p-4 rounded-lg shadow-inner">
             <h3 className="text-sm font-semibold text-primary mb-2">Domain Weights</h3>
             {DOMAINS.map((domain) => (
                 <div key={domain.key} className="flex flex-col gap-1.5">

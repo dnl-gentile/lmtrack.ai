@@ -1,4 +1,4 @@
-# market.ai — QA Checklist
+# lmmarket.ai — QA Checklist
 
 Use this checklist after merging feature branches or before each release to ensure everything works together.
 

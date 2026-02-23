@@ -24,7 +24,7 @@ export default function Chip({
 
   return (
     <div
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-xs select-none transition-colors ${
+      className={`inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs select-none transition-colors ${
         active
           ? "bg-chip-active-bg border-chip-active-border text-primary"
           : "bg-chip border-line text-muted"

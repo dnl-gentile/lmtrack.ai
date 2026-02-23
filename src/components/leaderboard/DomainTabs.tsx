@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { DOMAINS } from "@/lib/constants";
+import {
+  DOMAIN_MAP,
+  LEADERBOARD_TAB_LABEL_OVERRIDE,
+  LEADERBOARD_TAB_ORDER,
+} from "@/lib/constants";
 import type { DomainKey } from "@/lib/constants";
 
 interface DomainTabsProps {
@@ -10,21 +14,26 @@ interface DomainTabsProps {
 
 export default function DomainTabs({ activeDomain }: DomainTabsProps) {
   return (
-    <nav className="flex flex-wrap gap-1" aria-label="Leaderboard domains">
-      {DOMAINS.map((d) => {
-        const isActive = d.key === activeDomain;
+    <nav
+      className="scrollbar-hide -mx-1 flex flex-nowrap items-center gap-1.5 overflow-x-auto px-1.5 py-2 whitespace-nowrap lg:mx-0 lg:gap-4 lg:px-0 lg:py-2.5"
+      aria-label="Leaderboard domains"
+    >
+      {LEADERBOARD_TAB_ORDER.map((key) => {
+        const isActive = key === activeDomain;
         const href =
-          d.key === "overall" ? "/leaderboard" : `/leaderboard/${d.key}`;
+          key === "overall" ? "/leaderboard" : `/leaderboard/${key}`;
+        const label = LEADERBOARD_TAB_LABEL_OVERRIDE[key] ?? DOMAIN_MAP[key].label;
         return (
           <Link
-            key={d.key}
+            key={key}
             href={href}
-            className={`rounded-full px-4 py-1.5 text-sm transition-colors ${isActive
-                ? "bg-chip-active-bg border border-chip-active-border text-primary font-medium"
-                : "text-muted hover:bg-chip border border-transparent hover:text-primary"
-              }`}
+            className={`inline-flex shrink-0 items-center whitespace-nowrap rounded-[4px] px-4 py-2.5 text-[13px] font-normal leading-none tracking-[0.01em] transition-colors ${
+              isActive
+                ? "bg-chip-active-bg text-primary"
+                : "text-muted hover:bg-chip hover:text-primary"
+            }`}
           >
-            {d.label}
+            {label.replaceAll(" ", "\u00A0")}
           </Link>
         );
       })}

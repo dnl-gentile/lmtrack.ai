@@ -68,9 +68,9 @@ export async function getDataFreshness(): Promise<{
     const d = doc.data();
     const source = d.source as string;
     const completedAt = d.completedAt as string | null;
-    if (source === "arena" && arenaLastUpdated == null && completedAt)
+    if ((source === "arena" || source === "scrapeArena") && arenaLastUpdated == null && completedAt)
       arenaLastUpdated = completedAt;
-    if (source === "pricing" && pricingLastUpdated == null && completedAt)
+    if ((source === "pricing" || source === "updatePricing") && pricingLastUpdated == null && completedAt)
       pricingLastUpdated = completedAt;
     if (arenaLastUpdated != null && pricingLastUpdated != null) break;
   }
