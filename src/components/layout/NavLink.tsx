@@ -26,7 +26,7 @@ export default function NavLink({ href, icon, label, collapsed }: { href: string
     return (
         <Link
             href={href}
-            className={`flex w-full items-center gap-3 rounded-[8px] pl-2 pr-3 py-1.5 text-[14px] leading-[1.25] transition-colors ${isActive
+            className={`flex w-full items-center gap-2.5 rounded-[8px] pl-2 pr-2.5 py-1 text-[15px] leading-[1.25] transition-colors ${isActive
                 ? 'bg-chip text-primary'
                 : 'text-primary hover:bg-chip'
                 }`}

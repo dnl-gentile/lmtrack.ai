@@ -27,9 +27,9 @@ export default function Sidebar() {
         >
           <PanelLeftOpen className="h-5 w-5" strokeWidth={1.6} />
         </button>
-        <NavLink href="/records" label="Records" icon={<Database className="h-[18px] w-[18px]" strokeWidth={1.6} />} collapsed />
-        <NavLink href="/leaderboard" label="Leaderboard" icon={<ListOrdered className="h-[18px] w-[18px]" strokeWidth={1.6} />} collapsed />
         <NavLink href="/speed-test" label="Speed Test" icon={<Gauge className="h-[18px] w-[18px]" strokeWidth={1.6} />} collapsed />
+        <NavLink href="/leaderboard" label="Leaderboard" icon={<ListOrdered className="h-[18px] w-[18px]" strokeWidth={1.6} />} collapsed />
+        <NavLink href="/records" label="Records" icon={<Database className="h-[18px] w-[18px]" strokeWidth={1.6} />} collapsed />
         <div className="mt-auto w-full border-t border-line/50 py-2">
           <Link
             href="/terms-of-use"
@@ -60,12 +60,12 @@ export default function Sidebar() {
       </div>
 
       {/* Scrollable content */}
-      <div className="mt-2.5 flex-1 overflow-y-auto px-1 scrollbar-hide">
+      <div className="mt-1 flex-1 overflow-y-auto px-1 scrollbar-hide">
         <nav className="flex flex-col gap-1">
           <NavLink
-            href="/records"
-            label="Records"
-            icon={<Database className="h-[18px] w-[18px]" strokeWidth={1.6} />}
+            href="/speed-test"
+            label="Speed Test"
+            icon={<Gauge className="h-[18px] w-[18px]" strokeWidth={1.6} />}
           />
           <NavLink
             href="/leaderboard"
@@ -73,9 +73,9 @@ export default function Sidebar() {
             icon={<ListOrdered className="h-[18px] w-[18px]" strokeWidth={1.6} />}
           />
           <NavLink
-            href="/speed-test"
-            label="Speed Test"
-            icon={<Gauge className="h-[18px] w-[18px]" strokeWidth={1.6} />}
+            href="/records"
+            label="Records"
+            icon={<Database className="h-[18px] w-[18px]" strokeWidth={1.6} />}
           />
         </nav>
       </div>

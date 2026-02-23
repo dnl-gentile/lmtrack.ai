@@ -131,6 +131,10 @@ export default function LogoMenu() {
     window.open("https://arena.ai", "_blank", "noopener,noreferrer");
     setIsOpen(false);
   };
+  const openMarket = () => {
+    window.open("https://market-ai-42646.web.app/pricing", "_blank", "noopener,noreferrer");
+    setIsOpen(false);
+  };
 
   return (
     <div className="relative" ref={menuRef}>
@@ -185,7 +189,7 @@ export default function LogoMenu() {
               <button
                 type="button"
                 onClick={openArena}
-                className="flex items-center justify-center gap-0 border-r border-line px-2 py-1.5 text-[19px] text-primary transition-colors"
+                className="flex cursor-pointer items-center justify-center gap-0 border-r border-line px-2 py-1.5 text-[19px] text-primary transition-colors"
               >
                 <Image
                   src={isDark ? "/brand/white-arena.svg" : "/brand/arena.svg"}
@@ -198,10 +202,10 @@ export default function LogoMenu() {
                 <span className="font-serif font-medium leading-none tracking-tight">Arena</span>
               </button>
 
-              <Link
-                href="https://market-ai-42646.web.app"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-0 px-2 py-1.5 text-[19px] text-primary transition-colors"
+              <button
+                type="button"
+                onClick={openMarket}
+                className="flex cursor-pointer items-center justify-center gap-0 px-2 py-1.5 text-[19px] text-primary transition-colors"
               >
                 <Image
                   src={isDark ? "/market-ai-logo-white.png" : "/market-ai-logo.png"}
@@ -212,7 +216,7 @@ export default function LogoMenu() {
                   className="-mr-[1px] h-[1.08em] w-[1.08em] shrink-0 origin-center scale-[1.18] object-contain"
                 />
                 <span className="font-serif font-medium leading-none tracking-tight">Market</span>
-              </Link>
+              </button>
             </div>
           </div>
 

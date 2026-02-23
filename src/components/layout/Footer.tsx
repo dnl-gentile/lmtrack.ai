@@ -74,10 +74,10 @@ const FOOTER_SECTIONS: FooterSection[] = [
 ];
 
 const FOOTER_DISCLAIMER =
-  "We're a non-profit fan project and we're not associated with arena.ai (unless they want to talk).";
+  "We're an independent project and not affiliated with model vendors.";
 
 export default function Footer() {
-  const [logoSrc, setLogoSrc] = useState("/brand/track.svg");
+  const [logoSrc, setLogoSrc] = useState("/market-ai-logo.png");
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export default function Footer() {
       const theme = document.documentElement.getAttribute("data-theme");
       const isDark = theme === "dark";
       setIsDarkTheme(isDark);
-      setLogoSrc(isDark ? "/brand/white-track.svg" : "/brand/track.svg");
+      setLogoSrc(isDark ? "/market-ai-logo-white.png" : "/market-ai-logo.png");
     };
 
     syncTheme();
@@ -132,18 +132,18 @@ export default function Footer() {
                   height={56}
                   className="object-contain"
                   onError={() =>
-                    setLogoSrc(isDarkTheme ? "/brand/white-track.svg" : "/brand/track.svg")
+                    setLogoSrc(isDarkTheme ? "/market-ai-logo-white.png" : "/market-ai-logo.png")
                   }
                 />
               </div>
               <span className="font-serif text-[34px] leading-[0.88] tracking-tight text-primary sm:text-[38px] lg:text-[42px]">
-                Track
+                Market
               </span>
             </Link>
             <p className="text-center text-[10px] font-light italic leading-tight text-muted/85 [font-family:var(--font-cursive)]">
               {FOOTER_DISCLAIMER}
             </p>
-            <span className="text-center text-[15px] text-muted sm:text-right">© lmtrack.ai 2026</span>
+            <span className="text-center text-[15px] text-muted sm:text-right">© lmmarket.ai 2026</span>
           </div>
         </div>
 

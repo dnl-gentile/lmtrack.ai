@@ -15,6 +15,7 @@ export default function AppLayoutClient({ children }: { children: React.ReactNod
     const pathname = usePathname();
     const isLeaderboardDomainPage =
         pathname.startsWith("/leaderboard/") && pathname !== "/leaderboard";
+    const hideFooter = isLeaderboardDomainPage || pathname === "/speed-test";
     const mainClassName = isLeaderboardDomainPage
         ? "flex min-h-0 flex-1 flex-col overflow-y-auto bg-background lg:overflow-hidden"
         : "flex min-h-0 flex-1 flex-col overflow-y-auto bg-background";
@@ -41,11 +42,11 @@ export default function AppLayoutClient({ children }: { children: React.ReactNod
                             <LogoMenu />
                         </div>
 
-                        <nav className="mt-1.5 flex flex-col gap-1 px-0.5">
+                        <nav className="mt-0.5 flex flex-col gap-1 px-0.5">
                             <NavLink
-                                href="/records"
-                                label="Records"
-                                icon={<Database className="h-[18px] w-[18px]" strokeWidth={1.6} />}
+                                href="/speed-test"
+                                label="Speed Test"
+                                icon={<Gauge className="h-[18px] w-[18px]" strokeWidth={1.6} />}
                             />
                             <NavLink
                                 href="/leaderboard"
@@ -53,9 +54,9 @@ export default function AppLayoutClient({ children }: { children: React.ReactNod
                                 icon={<ListOrdered className="h-[18px] w-[18px]" strokeWidth={1.6} />}
                             />
                             <NavLink
-                                href="/speed-test"
-                                label="Speed Test"
-                                icon={<Gauge className="h-[18px] w-[18px]" strokeWidth={1.6} />}
+                                href="/records"
+                                label="Records"
+                                icon={<Database className="h-[18px] w-[18px]" strokeWidth={1.6} />}
                             />
                         </nav>
                     </div>
@@ -65,7 +66,7 @@ export default function AppLayoutClient({ children }: { children: React.ReactNod
                     <div className={contentClassName}>
                         {children}
                     </div>
-                    <div className={isLeaderboardDomainPage ? "hidden" : ""}>
+                    <div className={hideFooter ? "hidden" : ""}>
                         <Footer />
                     </div>
                 </main>
