@@ -11,7 +11,13 @@ export const metadata: Metadata = {
 
 export default function LeaderboardPage() {
   return (
-    <Suspense fallback={<div className="flex min-h-screen items-center justify-center text-muted">Loading overview...</div>}>
+    <Suspense
+      fallback={
+        <div className="mx-auto flex min-h-[60vh] w-full max-w-7xl items-center justify-center px-4 py-6 text-muted">
+          Loading overview...
+        </div>
+      }
+    >
       <OverviewClient />
     </Suspense>
   );
