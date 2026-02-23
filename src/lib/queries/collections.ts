@@ -11,4 +11,7 @@ export const COLL = {
   benchmarkJobs: "benchmarkJobs",
   speedRuns: "speedRuns",
   speedRecords: "speedRecords",
+  speedArenaRuns: "speedArenaRuns",
+  speedArenaRounds: "speedArenaRounds",
+  speedArenaVotes: "speedArenaVotes",
 } as const;

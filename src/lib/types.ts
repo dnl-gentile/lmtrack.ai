@@ -163,6 +163,106 @@ export interface SpeedRecordsResponse {
   message?: string;
 }
 
+export type ArenaMode = "battle" | "side_by_side" | "direct";
+
+export type ArenaPromptPreset = "default" | "concise" | "creative" | "coding" | "factual";
+
+export type ArenaVoteChoice = "A" | "B" | "both_good" | "both_bad";
+
+export interface ArenaRunRequest {
+  mode: ArenaMode;
+  prompt: string;
+  preset?: ArenaPromptPreset;
+  sessionId?: string;
+  leftModelSlug?: string;
+  rightModelSlug?: string;
+  directModelSlug?: string;
+}
+
+export interface ArenaRunResponseSlot {
+  slot: "A" | "B";
+  text: string | null;
+  latencyMs: number | null;
+  error: string | null;
+}
+
+export interface ArenaDirectResponse {
+  text: string | null;
+  latencyMs: number | null;
+  modelSlug: string;
+  modelName: string;
+  vendorName: string;
+  error: string | null;
+}
+
+export interface ArenaVoteRevealModel {
+  modelSlug: string;
+  modelName: string;
+  vendorName: string;
+  latencyMs: number | null;
+}
+
+export interface ArenaVoteResponse {
+  status: "ok" | "error";
+  reveal: {
+    A: ArenaVoteRevealModel;
+    B: ArenaVoteRevealModel;
+  };
+  message?: string;
+}
+
+export interface ArenaVoteRequest {
+  roundId: string;
+  sessionId: string;
+  vote: ArenaVoteChoice;
+}
+
+export interface ArenaRunResponse {
+  status: "ok" | "partial" | "error";
+  roundId: string;
+  sessionId: string;
+  mode: ArenaMode;
+  prompt: string;
+  responses: ArenaRunResponseSlot[];
+  directResponse?: ArenaDirectResponse;
+  requiresVote: boolean;
+  rateLimit: {
+    remaining: number;
+    resetAt: string;
+  };
+  message?: string;
+}
+
+export interface ArenaSessionRoundLocal {
+  roundId: string;
+  mode: ArenaMode;
+  prompt: string;
+  preset: ArenaPromptPreset;
+  createdAt: string;
+  status: ArenaRunResponse["status"];
+  isPending: boolean;
+  requiresVote: boolean;
+  responses: ArenaRunResponseSlot[];
+  directResponse?: ArenaDirectResponse;
+  vote?: ArenaVoteChoice;
+  reveal?: ArenaVoteResponse["reveal"];
+  message?: string;
+}
+
+export interface ArenaSessionLocal {
+  sessionId: string;
+  mode: ArenaMode;
+  title: string;
+  createdAt: string;
+  lastUpdatedAt: string;
+  roundCount: number;
+  preset: ArenaPromptPreset;
+  selectedLeftModelSlug: string;
+  selectedRightModelSlug: string;
+  selectedDirectModelSlug: string;
+  rounds: ArenaSessionRoundLocal[];
+}
+
 // ─── UI / API Response Types ──────────────────────────────────
 
 export interface LeaderboardEntry {
