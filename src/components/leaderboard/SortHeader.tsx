@@ -6,6 +6,7 @@ interface SortHeaderProps {
   currentSort: string;
   currentDir: "asc" | "desc";
   onSort: (field: string) => void;
+  align?: "left" | "center" | "right";
 }
 
 export default function SortHeader({
@@ -14,17 +15,26 @@ export default function SortHeader({
   currentSort,
   currentDir,
   onSort,
+  align = "left",
 }: SortHeaderProps) {
   const isActive = currentSort === field;
   const dir = isActive ? currentDir : null;
+  const headerAlignClass =
+    align === "center" ? "text-center" : align === "right" ? "text-right" : "text-left";
+  const contentAlignClass =
+    align === "center"
+      ? "justify-center w-full"
+      : align === "right"
+      ? "justify-end w-full"
+      : "";
 
   return (
     <th
       scope="col"
-      className="cursor-pointer select-none whitespace-nowrap px-3 py-2.5 text-left text-xs font-medium text-muted hover:text-primary"
+      className={`cursor-pointer select-none whitespace-nowrap px-3 py-2.5 text-xs font-medium text-muted hover:text-primary ${headerAlignClass}`}
       onClick={() => onSort(field)}
     >
-      <span className="inline-flex items-center gap-1">
+      <span className={`inline-flex items-center gap-1 ${contentAlignClass}`}>
         {label}
         {dir === "asc" ? (
           <span className="text-primary" aria-hidden>

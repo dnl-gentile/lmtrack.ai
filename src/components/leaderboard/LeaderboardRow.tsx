@@ -17,7 +17,7 @@ export default function LeaderboardRow({ entry, rank }: LeaderboardRowProps) {
 
   return (
     <tr className="border-b border-line/50 transition-colors hover:bg-hover">
-      <td className="px-3 py-2.5">
+      <td className="px-3 py-2.5 text-center">
         <RankBadge rank={rank} />
       </td>
       <td className="px-3 py-2.5">
@@ -29,10 +29,10 @@ export default function LeaderboardRow({ entry, rank }: LeaderboardRowProps) {
           <span className="font-medium">{model.canonicalName}</span>
         </Link>
       </td>
-      <td className="px-3 py-2.5">
+      <td className="px-3 py-2.5 text-center">
         <ScoreCell score={eloScore} ci={eloCi} />
       </td>
-      <td className="px-3 py-2.5 text-muted tabular-nums">
+      <td className="px-3 py-2.5 text-center text-muted tabular-nums">
         {votes != null ? votes.toLocaleString() : <MissingDataBadge />}
       </td>
       <td className="px-3 py-2.5">

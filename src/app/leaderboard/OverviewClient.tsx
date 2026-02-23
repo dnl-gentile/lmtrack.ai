@@ -91,27 +91,27 @@ function DomainCard({ domain }: { domain: DomainKey }) {
         <table className="w-full whitespace-nowrap text-left text-sm bg-table">
           <thead className="border-b border-line bg-table-header text-muted">
             <tr>
-              <th className="px-4 py-2.5 text-xs font-medium">Rank</th>
+              <th className="w-16 px-4 py-2.5 text-center text-xs font-medium">Rank</th>
               <th className="px-4 py-2.5 text-xs font-medium">Model</th>
-              <th className="px-4 py-2.5 text-right text-xs font-medium">Score ↓</th>
-              <th className="px-4 py-2.5 text-right text-xs font-medium">Votes ↕</th>
+              <th className="px-4 py-2.5 text-center text-xs font-medium">Score ↓</th>
+              <th className="px-4 py-2.5 text-center text-xs font-medium">Votes ↕</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-line">
             {isLoading &&
               Array.from({ length: 10 }).map((_, i) => (
                 <tr key={`skeleton-${i}`}>
-                  <td className="px-4 py-3">
-                    <Skeleton className="h-4 w-6 rounded" />
+                  <td className="px-4 py-3 text-center">
+                    <Skeleton className="mx-auto h-4 w-6 rounded" />
                   </td>
                   <td className="px-4 py-3">
                     <Skeleton className="h-4 w-32 rounded" />
                   </td>
-                  <td className="px-4 py-3 text-right">
-                    <Skeleton className="ml-auto h-4 w-12 rounded" />
+                  <td className="px-4 py-3 text-center">
+                    <Skeleton className="mx-auto h-4 w-12 rounded" />
                   </td>
-                  <td className="px-4 py-3 text-right">
-                    <Skeleton className="ml-auto h-4 w-12 rounded" />
+                  <td className="px-4 py-3 text-center">
+                    <Skeleton className="mx-auto h-4 w-12 rounded" />
                   </td>
                 </tr>
               ))}
@@ -161,18 +161,18 @@ function DomainCard({ domain }: { domain: DomainKey }) {
                     : `/leaderboard/${domain}?search=${entry.model.slug}`;
                 return (
                   <tr key={entry.model.id} className="transition-colors hover:bg-hover">
-                    <td className="px-4 py-3 font-medium text-muted">{idx + 1}</td>
+                    <td className="px-4 py-3 text-center font-semibold text-primary tabular-nums">{idx + 1}</td>
                     <td className="px-4 py-3 font-medium text-primary">
                       <Link href={href} className="hover:underline">
                         {entry.model.canonicalName}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-right text-primary">
+                    <td className="px-4 py-3 text-center text-primary tabular-nums">
                       {entry.valueScore != null
                         ? entry.valueScore.toLocaleString()
                         : "Missing"}
                     </td>
-                    <td className="px-4 py-3 text-right text-muted">
+                    <td className="px-4 py-3 text-center text-muted tabular-nums">
                       {entry.votes != null ? entry.votes.toLocaleString() : "Missing"}
                     </td>
                   </tr>

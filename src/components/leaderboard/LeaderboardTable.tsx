@@ -34,7 +34,7 @@ export default function LeaderboardTable({
           <tr className="sticky top-0 z-10 border-b border-line bg-table-header">
             <th
               scope="col"
-              className="w-12 px-3 py-2.5 text-left text-xs font-medium text-muted"
+              className="w-16 px-3 py-2.5 text-center text-xs font-medium text-muted"
             >
               Rank
             </th>
@@ -50,6 +50,7 @@ export default function LeaderboardTable({
               currentSort={sort}
               currentDir={dir}
               onSort={onSort}
+              align="center"
             />
             <SortHeader
               label="Votes"
@@ -57,6 +58,7 @@ export default function LeaderboardTable({
               currentSort={sort}
               currentDir={dir}
               onSort={onSort}
+              align="center"
             />
             <SortHeader
               label="$/1M tok"
