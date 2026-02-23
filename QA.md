@@ -1,4 +1,4 @@
-# lmmarket.ai — QA Checklist
+# lmtrack.ai — QA Checklist
 
 Use this checklist after merging feature branches or before each release to ensure everything works together.
 
@@ -111,7 +111,7 @@ These must pass; fix before considering QA done.
 | **Filters update table immediately** | Changing any filter (domain, vendor, price, context, modality, arena) refreshes or re-filters the leaderboard without full reload. |
 | **Missing data = “Missing” badge** | No blank cells for missing data; use `<MissingDataBadge />` (or explicit “Missing” text) everywhere. |
 | **Data freshness visible** | At least one place (e.g. leaderboard or sidebar) shows when data was last updated. |
-| **Logo in sidebar** | `market-ai-logo.png` appears in the sidebar (e.g. in `Sidebar.tsx` via `/market-ai-logo.png` from `public/`). |
+| **Logo in sidebar** | `track.svg` appears in the sidebar/menu brand area (e.g. via `/brand/track.svg`). |
 
 ---
 

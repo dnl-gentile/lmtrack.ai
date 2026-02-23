@@ -328,7 +328,7 @@ export default function PricingInsights({ data }: PricingInsightsProps) {
       ? "Price history"
       : metricMode === "weighted"
       ? "Value score history"
-      : "Arena score history";
+      : "Quality score history";
 
   return (
     <section className="space-y-5 rounded-[20px] border border-line bg-table p-4 lg:p-5">
@@ -354,7 +354,7 @@ export default function PricingInsights({ data }: PricingInsightsProps) {
           >
             <option value="price">Price (blended)</option>
             <option value="weighted">Score weighted by price</option>
-            <option value="score">Arena score</option>
+            <option value="score">Quality score</option>
           </select>
         </label>
 
@@ -514,7 +514,7 @@ export default function PricingInsights({ data }: PricingInsightsProps) {
               <th className="px-4 py-3 text-right text-xs font-medium">Min</th>
               <th className="px-4 py-3 text-right text-xs font-medium">Max</th>
               <th className="px-4 py-3 text-right text-xs font-medium">Weighted</th>
-              <th className="px-4 py-3 text-right text-xs font-medium">Arena</th>
+              <th className="px-4 py-3 text-right text-xs font-medium">Quality</th>
               <th className="px-4 py-3 text-right text-xs font-medium">Latest</th>
             </tr>
           </thead>

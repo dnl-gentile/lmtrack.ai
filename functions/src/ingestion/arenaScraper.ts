@@ -31,7 +31,7 @@ export async function scrapeArenaLeaderboard(
       signal: controller.signal,
       headers: {
         "User-Agent":
-          "market-ai-functions/1.0 (Firebase; +https://lmmarket.ai)",
+          "lmtrack-ai-functions/1.0 (Firebase; +https://lmtrack.ai)",
       },
     });
     clearTimeout(timeout);

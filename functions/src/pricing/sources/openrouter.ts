@@ -3,7 +3,7 @@ import { cleanPrice, toUsdPer1M } from "../normalizers";
 import type { PricingSourceRecord } from "../types";
 
 const OPENROUTER_MODELS_ENDPOINT = "https://openrouter.ai/api/v1/models";
-const OPENROUTER_REFERER = "https://lmmarket.ai";
+const OPENROUTER_REFERER = "https://lmtrack.ai";
 
 interface OpenRouterModel {
   id?: string;
@@ -24,7 +24,7 @@ export async function fetchOpenRouterPricing(snapshotAt: string): Promise<Pricin
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     "HTTP-Referer": OPENROUTER_REFERER,
-    "X-Title": "lmmarket.ai",
+    "X-Title": "lmtrack.ai",
   };
 
   const key = process.env.OPENROUTER_API_KEY;

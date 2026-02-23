@@ -23,16 +23,15 @@ const THEME_INIT_SCRIPT = `
 
 export const metadata: Metadata = {
   title: {
-    default: "lmmarket.ai - AI Model Value Rankings",
-    template: "%s | lmmarket.ai",
+    default: "lmtrack.ai - AI Model Speed Rankings",
+    template: "%s | lmtrack.ai",
   },
   description:
-    "Compare AI models by cost-efficiency. Combines Arena quality scores with API pricing to find the best value models.",
+    "Benchmark AI model speed and compare latency records across providers.",
   openGraph: {
-    title: "lmmarket.ai - AI Model Value Rankings",
-    description:
-      "Compare AI models by cost-efficiency. Find the best value AI models.",
-    siteName: "lmmarket.ai",
+    title: "lmtrack.ai - AI Model Speed Rankings",
+    description: "Benchmark model latency and track global speed records.",
+    siteName: "lmtrack.ai",
     type: "website",
   },
   icons: {

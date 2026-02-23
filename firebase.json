@@ -11,7 +11,7 @@
     }
   ],
   "hosting": {
-    "site": "market-ai-42646",
+    "site": "track-ai-amt",
     "source": ".",
     "frameworksBackend": {
       "region": "us-central1"

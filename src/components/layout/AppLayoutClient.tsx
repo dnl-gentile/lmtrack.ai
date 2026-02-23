@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ListOrdered, ArrowLeftRight, CircleDollarSign } from "lucide-react";
+import { ListOrdered, Database, Gauge } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
@@ -43,19 +43,19 @@ export default function AppLayoutClient({ children }: { children: React.ReactNod
 
                         <nav className="mt-1.5 flex flex-col gap-1 px-0.5">
                             <NavLink
-                                href="/pricing"
-                                label="Pricing"
-                                icon={<CircleDollarSign className="w-5 h-5" strokeWidth={1.6} />}
+                                href="/records"
+                                label="Records"
+                                icon={<Database className="h-[18px] w-[18px]" strokeWidth={1.6} />}
                             />
                             <NavLink
                                 href="/leaderboard"
                                 label="Leaderboard"
-                                icon={<ListOrdered className="w-5 h-5" strokeWidth={1.6} />}
+                                icon={<ListOrdered className="h-[18px] w-[18px]" strokeWidth={1.6} />}
                             />
                             <NavLink
-                                href="/compare"
-                                label="Compare"
-                                icon={<ArrowLeftRight className="w-5 h-5" strokeWidth={1.6} />}
+                                href="/speed-test"
+                                label="Speed Test"
+                                icon={<Gauge className="h-[18px] w-[18px]" strokeWidth={1.6} />}
                             />
                         </nav>
                     </div>

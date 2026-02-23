@@ -8,4 +8,7 @@ export const COLL = {
   pricing: "pricing",
   computedMetrics: "computedMetrics",
   dataSnapshots: "dataSnapshots",
+  benchmarkJobs: "benchmarkJobs",
+  speedRuns: "speedRuns",
+  speedRecords: "speedRecords",
 } as const;

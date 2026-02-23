@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     domainParam in DOMAIN_MAP ? (domainParam as DomainKey) : "overall";
   return {
     title: {
-      absolute: `${TAB_TITLE_MAP[domain]} | Market`,
+      absolute: `${TAB_TITLE_MAP[domain]} | Track`,
     },
   };
 }

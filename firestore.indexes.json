@@ -109,6 +109,34 @@
           "order": "ASCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "speedRuns",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "speedRecords",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "testKey",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "bestMedianLatencyMs",
+          "order": "ASCENDING"
+        }
+      ]
     }
   ],
   "fieldOverrides": []

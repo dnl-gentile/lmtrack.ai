@@ -99,6 +99,70 @@ export interface DataSnapshot {
   completedAt: string | null;
 }
 
+export type SpeedTestKey = "overall" | "short" | "medium" | "long";
+
+export interface SpeedTestCase {
+  key: Exclude<SpeedTestKey, "overall">;
+  label: string;
+  prompt: string;
+  maxOutputTokens: number;
+}
+
+export interface SpeedRunResult {
+  modelId: string;
+  modelSlug: string;
+  modelName: string;
+  vendorSlug: string;
+  vendorName: string;
+  testKey: Exclude<SpeedTestKey, "overall">;
+  attemptLatenciesMs: number[];
+  medianLatencyMs: number | null;
+  success: boolean;
+  error: string | null;
+}
+
+export interface SpeedRunModelSummary {
+  modelId: string;
+  modelSlug: string;
+  modelName: string;
+  vendorSlug: string;
+  vendorName: string;
+  tests: Record<Exclude<SpeedTestKey, "overall">, SpeedRunResult | null>;
+  overallMedianLatencyMs: number | null;
+}
+
+export interface SpeedRunResponse {
+  status: "ok" | "partial" | "error";
+  runId: string;
+  models: SpeedRunModelSummary[];
+  skippedModels: Array<{
+    modelId: string;
+    modelSlug: string;
+    modelName: string;
+    vendorSlug: string;
+    reason: string;
+  }>;
+  message?: string;
+}
+
+export interface SpeedRecordEntry {
+  id: string;
+  modelId: string;
+  modelSlug: string;
+  modelName: string;
+  vendorSlug: string;
+  vendorName: string;
+  bestMedianLatencyMs: number;
+  testKey: SpeedTestKey;
+  updatedAt: string;
+}
+
+export interface SpeedRecordsResponse {
+  status: "ok" | "error";
+  records: SpeedRecordEntry[];
+  message?: string;
+}
+
 // ─── UI / API Response Types ──────────────────────────────────
 
 export interface LeaderboardEntry {

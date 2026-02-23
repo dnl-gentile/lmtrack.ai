@@ -100,13 +100,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: modelName,
     description: model
-      ? `${model.canonicalName} quality, pricing, and value metrics on lmmarket.ai.`
-      : "Model quality, pricing, and value metrics on lmmarket.ai.",
+      ? `${model.canonicalName} quality, pricing, and value metrics on lmtrack.ai.`
+      : "Model quality, pricing, and value metrics on lmtrack.ai.",
     openGraph: {
-      title: `${modelName} | lmmarket.ai`,
+      title: `${modelName} | lmtrack.ai`,
       description: model
-        ? `${model.canonicalName} quality, pricing, and value metrics on lmmarket.ai.`
-        : "Model quality, pricing, and value metrics on lmmarket.ai.",
+        ? `${model.canonicalName} quality, pricing, and value metrics on lmtrack.ai.`
+        : "Model quality, pricing, and value metrics on lmtrack.ai.",
       type: "website",
     },
   };
@@ -167,7 +167,7 @@ export default async function ModelDetailPage({ params }: PageProps) {
 
         <section className="grid gap-4 md:grid-cols-3">
           <ModelScoreCard
-            title="Arena Quality"
+            title="Track Quality"
             mainValue={
               overallArena?.eloScore != null ? Math.round(overallArena.eloScore) : "—"
             }

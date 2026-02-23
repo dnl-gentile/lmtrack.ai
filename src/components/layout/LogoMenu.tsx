@@ -40,9 +40,9 @@ const menuGroups: LogoMenuItem[][] = [
   ],
   [
     {
-      href: "https://discord.gg/arena",
+      href: "#",
       label: "Join Discord",
-      external: true,
+      external: false,
       discordAccent: true,
       customIcon: "discord",
     },
@@ -65,7 +65,7 @@ function DiscordGlyph({ className }: { className?: string }) {
   );
 }
 
-// Arena order: System/Auto first, then Light, then Dark
+// System/Auto first, then Light, then Dark
 const themeOptions: Array<{ value: ThemePreference; label: string; icon: LucideIcon }> = [
   { value: "auto", label: "Auto", icon: Monitor },
   { value: "light", label: "Light", icon: Sun },
@@ -87,13 +87,13 @@ export default function LogoMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [themePreference, setThemePreference] = useState<ThemePreference>("auto");
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
-  const [logoSrc, setLogoSrc] = useState("/market-ai-logo.png");
+  const [logoSrc, setLogoSrc] = useState("/brand/track.svg");
   const menuRef = useRef<HTMLDivElement>(null);
   const prefRef = useRef<ThemePreference>("auto");
 
   const syncTheme = (next: "light" | "dark") => {
     setResolvedTheme(next);
-    setLogoSrc(next === "dark" ? "/market-ai-logo-white.png" : "/market-ai-logo.png");
+    setLogoSrc(next === "dark" ? "/brand/white-track.svg" : "/brand/track.svg");
   };
 
   useEffect(() => {
@@ -138,15 +138,19 @@ export default function LogoMenu() {
         <div className="relative h-9 w-9 shrink-0 overflow-hidden -mr-1">
           <Image
             src={logoSrc}
-            alt="Market logo"
+            alt="Track logo"
             width={36}
             height={36}
             className="object-contain"
-            onError={() => setLogoSrc("/market-ai-logo.png")}
+            onError={() =>
+              setLogoSrc(
+                resolvedTheme === "dark" ? "/brand/white-track.svg" : "/brand/track.svg"
+              )
+            }
           />
         </div>
         <div className="flex items-center min-w-0">
-          <span className="text-[26px] font-serif font-normal tracking-tight text-primary truncate">Market</span>
+          <span className="text-[26px] font-serif font-normal tracking-tight text-primary truncate">Track</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"
@@ -172,39 +176,43 @@ export default function LogoMenu() {
         >
           <div className="px-3 pb-1 pt-1">
             <div
-              className={`grid grid-cols-2 overflow-hidden rounded-md border border-line ${
-                isDark ? "bg-chip/40" : "bg-chip/50"
-              }`}
+              className="grid grid-cols-2 overflow-hidden rounded-md border border-line bg-background"
             >
               <Link
                 href="https://arena.ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center justify-center gap-0 px-2 py-1.5 text-[19px] text-primary transition-colors ${
-                  isDark ? "hover:bg-hover/70" : "hover:bg-chip/60"
-                }`}
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center gap-0 border-r border-line px-2 py-1.5 text-[19px] text-primary transition-colors"
               >
                 <Image
-                  src="/brand/arena.svg"
+                  src={isDark ? "/brand/white-arena.svg" : "/brand/arena.svg"}
                   alt=""
                   aria-hidden="true"
                   width={20}
                   height={20}
-                  className={`-mr-[1px] h-[0.95em] w-[0.95em] shrink-0 origin-center scale-[1.3] object-contain ${isDark ? "invert brightness-0" : ""}`}
+                  className="-mr-[1px] h-[1.02em] w-[1.02em] shrink-0 origin-center scale-[1.22] object-contain"
                 />
                 <span className="font-serif font-medium leading-none tracking-tight">Arena</span>
               </Link>
-              <div className="flex items-center justify-center gap-0 border-l border-line px-2 py-1.5 text-[19px] text-primary">
+
+              <Link
+                href="https://market-ai-42646.web.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center gap-0 px-2 py-1.5 text-[19px] text-primary transition-colors"
+              >
                 <Image
-                  src="/brand/track.svg"
+                  src={isDark ? "/market-ai-logo-white.png" : "/market-ai-logo.png"}
                   alt=""
                   aria-hidden="true"
                   width={20}
                   height={20}
-                  className={`-mr-[1px] h-[0.95em] w-[0.95em] shrink-0 origin-center scale-[1.22] object-contain ${isDark ? "invert brightness-0" : ""}`}
+                  className="-mr-[1px] h-[1.08em] w-[1.08em] shrink-0 origin-center scale-[1.18] object-contain"
                 />
-                <span className="font-serif font-medium leading-none tracking-tight">Track</span>
-              </div>
+                <span className="font-serif font-medium leading-none tracking-tight">Market</span>
+              </Link>
             </div>
           </div>
 

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { PanelLeftOpen, PanelLeftClose, ListOrdered, ArrowLeftRight, CircleDollarSign, FileText } from 'lucide-react';
+import { PanelLeftOpen, PanelLeftClose, ListOrdered, Database, Gauge, FileText } from 'lucide-react';
 import NavLink from './NavLink';
 import LogoMenu from './LogoMenu';
 
@@ -27,9 +27,9 @@ export default function Sidebar() {
         >
           <PanelLeftOpen className="h-5 w-5" strokeWidth={1.6} />
         </button>
-        <NavLink href="/pricing" label="" icon={<CircleDollarSign className="h-5 w-5" strokeWidth={1.6} />} collapsed />
-        <NavLink href="/leaderboard" label="" icon={<ListOrdered className="h-5 w-5" strokeWidth={1.6} />} collapsed />
-        <NavLink href="/compare" label="" icon={<ArrowLeftRight className="h-5 w-5" strokeWidth={1.6} />} collapsed />
+        <NavLink href="/records" label="Records" icon={<Database className="h-[18px] w-[18px]" strokeWidth={1.6} />} collapsed />
+        <NavLink href="/leaderboard" label="Leaderboard" icon={<ListOrdered className="h-[18px] w-[18px]" strokeWidth={1.6} />} collapsed />
+        <NavLink href="/speed-test" label="Speed Test" icon={<Gauge className="h-[18px] w-[18px]" strokeWidth={1.6} />} collapsed />
         <div className="mt-auto w-full border-t border-line/50 py-2">
           <Link
             href="/terms-of-use"
@@ -63,19 +63,19 @@ export default function Sidebar() {
       <div className="mt-2.5 flex-1 overflow-y-auto px-1 scrollbar-hide">
         <nav className="flex flex-col gap-1">
           <NavLink
-            href="/pricing"
-            label="Pricing"
-            icon={<CircleDollarSign className="h-5 w-5" strokeWidth={1.6} />}
+            href="/records"
+            label="Records"
+            icon={<Database className="h-[18px] w-[18px]" strokeWidth={1.6} />}
           />
           <NavLink
             href="/leaderboard"
             label="Leaderboard"
-            icon={<ListOrdered className="h-5 w-5" strokeWidth={1.6} />}
+            icon={<ListOrdered className="h-[18px] w-[18px]" strokeWidth={1.6} />}
           />
           <NavLink
-            href="/compare"
-            label="Compare"
-            icon={<ArrowLeftRight className="h-5 w-5" strokeWidth={1.6} />}
+            href="/speed-test"
+            label="Speed Test"
+            icon={<Gauge className="h-[18px] w-[18px]" strokeWidth={1.6} />}
           />
         </nav>
       </div>
